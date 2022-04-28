@@ -1,0 +1,50 @@
+//
+// Forms.scss
+//
+
+.form-check-right {
+  padding-left: 0;
+  display: inline-block;
+  padding-right: 1.25rem;
+
+  .form-check-input {
+    right: 0;
+    margin-left: 0;
+  }
+
+  .form-check-label {
+    display: block;
+  }
+}
+
+.custom-control-right {
+  padding-left: 0;
+  padding-right: 1.5rem;  
+  display: inline-block;
+
+  .custom-control-label {
+    display: inline-block;
+    &:before, &:after {
+      left: auto;
+      right: -1.5rem;
+    }
+  }
+  
+  .custom-control-input {
+    left: auto;
+  }
+}
+
+.search-box {
+  .form-control {
+    border-radius: 30px;
+    padding-left: 40px;
+  }
+  .search-icon{
+    font-size: 16px;    
+    position: absolute;
+    left: 13px;
+    top: 0;
+    line-height: 38px;
+  }
+}

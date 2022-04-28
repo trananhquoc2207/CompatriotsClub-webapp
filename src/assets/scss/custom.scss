@@ -1,0 +1,288 @@
+.wrapper {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #FFF; 
+  border: 1px solid #ddd;
+  border-radius: 4px; 
+  box-shadow: 1px 1px 3px -1px #ccc; 
+}
+
+/* Wrapper */
+.nav-panel {
+  margin-top: $header-height;
+}
+
+.panel-content {
+  padding: calc(#{$grid-gutter-width}) calc(#{$grid-gutter-width} / 2) $footer-height calc(#{$grid-gutter-width} / 2);
+}
+
+/* Table Wrapper */
+.table-wrapper > thead > tr > td, 
+.table-wrapper > thead > tr > th {
+  border: 0
+}
+.table-wrapper th, .table-wrapper td {
+  padding: 7px 10px;
+}
+.table-wrapper > thead > tr:last-child {
+  border-bottom: 2px solid #ddd;
+}
+.table-wrapper > tbody > tr {
+  border-bottom: 1px solid #ddd;
+}
+.table-wrapper > tbody > tr:last-child {
+  border: 0;
+}
+.table-wrapper .active {
+  background-color: #ffc!important;
+}
+.table-wrapper .bg-green {
+  background-color: #e6ffcc!important;
+}
+.table-wrapper .bg-yellow {
+  background-color: #ffc!important;
+}
+.table-wrapper .bg-red {
+  background-color: #ff3734!important;
+}
+
+/* Table Calendar */
+.table-calendar > table {
+  border: 0;
+}
+.table-calendar > tbody > tr > td,
+.table-calendar > thead > tr > th {
+  width: 120px;
+  padding: .25rem;
+  overflow: hidden;
+  border: 2px solid #ddd;
+}
+.table-calendar > thead > tr > th {
+  color: #000000;
+  font-weight: bold;
+  background-color: rgb(247, 248, 249);
+}
+.table-calendar > tbody > tr > td {
+  padding: .25rem;
+  height: 110px;
+  width: 120px;
+}
+.table-calendar .day {
+  width: 100%;
+  font-size: 12px;
+  text-align: right;
+}
+.table-calendar .container {
+  margin-top: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+.table-calendar .warning {
+  color: #ff3734;
+}
+
+.table-calendar-detail {
+  width: 210px;
+  padding: .6rem .4rem;
+  background-color: rgb(247, 248, 249);
+  border-top: 1px solid rgb(221, 221, 221);
+  border-right: 1px solid rgb(221, 221, 221);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.table-calendar-detail .item {
+  display: flex; 
+  justify-content: space-between; 
+  padding: .6rem 0;
+  border-bottom: 1px solid #ddd;
+}
+.table-calendar-detail .item:first-child {
+  padding-top: 0;
+}
+.table-calendar-detail .item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+/* Table Rounded */
+.table-rounded tr:first-child th:first-child {
+  border-top-left-radius: 4px;
+}
+.table-rounded tr:first-child th:last-child {
+  border-top-right-radius: 4px;
+}
+.table-rounded tr:last-child td:first-child {
+  border-bottom-left-radius: 4px;
+}
+.table-rounded tr:last-child td:last-child {
+  border-bottom-right-radius: 4px;
+}
+
+/* Table Detail */
+.table-detail {
+  border-spacing: 0;
+  border-radius: 4px 4px 4px 4px;
+  -moz-border-radius: 4px 4px 4px 4px;
+  -webkit-border-radius: 4px 4px 4px 4px;
+  box-shadow: 0 1px 1px #ddd;
+}
+.table-detail, .table-detail th, .table-detail td {
+  border: 1px solid #ddd;
+}
+
+/* Table Collapse */
+.table-collapse {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-collapse__column {
+  display: table-row;
+  border-collapse: collapse;
+  border-bottom: 1px solid #ddd;
+}
+.table-collapse__column:hover {
+  background-color: #f8f9fa;
+}
+.table-collapse__column:last-child {
+  border: 0;
+}
+.table-collapse__header {
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+}
+.table-collapse__column, .table-collapse__header, .table-collapse__cell {
+  padding: 7px 10px;
+}
+.table-collapse__header, .table-collapse__cell {
+  width: 1%;
+  height: 20px;
+  display: table-cell;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.table-collapse__wide-cell {
+  padding: 7px 10px;
+  display: table-caption;
+  caption-side: bottom;
+}
+
+/* React-datepicker custom */
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+  display: block;
+  width: 100%;
+}
+
+/* Select Custom */
+.select-custom {
+  border-radius: 30px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none; 
+}
+.select-custom + i.bx {
+  font-size: 18px;
+  float: right;
+  margin-top: -28px;
+  margin-right: 5px;
+  pointer-events: none;
+  background-color: #fff;
+  padding-right: 5px;
+}
+
+.data-time-picker {
+  border-radius: 30px;
+}
+
+.add-button {
+  float: right;
+  display: block;
+  margin-right: 10px;
+  padding: .47rem .75rem;
+  border-radius: .25rem;
+  color: #fff !important;
+  background-color: #34c38f !important;
+  border-color: #34c38f !important;
+}
+
+.form-group label {
+  font-size: 14px;
+}
+.form-group .required::after {
+  margin-left: 3px;
+  content: '*';
+  font-weight: 700;
+  color: red;
+}
+.form-group .form-control:hover {
+  border: 1px solid #96c8da !important;
+}
+.form-group .form-control:focus {
+  border: 1px solid #96c8da !important;
+}
+
+.form-control:hover {
+  border: 1px solid #96c8da !important;
+}
+.form-control:focus {
+  border: 1px solid #96c8da !important;
+}
+
+.DayPickerInput {
+  width: 100%;
+}
+
+.DayPicker-Day {
+  padding: 6px 8px !important;
+}
+.InputFromTo {
+  display: flex;
+  flex-direction: row;
+}
+.InputFromTo .DayPickerInput {
+  width: 100% !important;
+}
+.InputFromTo-to {
+  width: 100% !important;
+}
+.InputFromTo-to .DayPickerInput {
+  width: 100% !important;
+}
+.InputFromTo
+  .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+  background-color: #f0f8ff !important;
+  color: #4a90e2;
+}
+.InputFromTo .DayPicker-Day {
+  border-radius: 0 !important;
+}
+.InputFromTo .DayPicker-Day--start {
+  border-top-left-radius: 50% !important;
+  border-bottom-left-radius: 50% !important;
+}
+.InputFromTo .DayPicker-Day--end {
+  border-top-right-radius: 50% !important;
+  border-bottom-right-radius: 50% !important;
+}
+.InputFromTo .DayPickerInput-Overlay {
+  z-index: 3;
+  width: 550px;
+}
+.InputFromTo-to .DayPickerInput-Overlay {
+  z-index: 3;
+  margin-left: -198px;
+}
+.DayPickerInput-Overlay.overlay-top {
+  bottom: 45px;
+}
+
+.react-datepicker-popper {
+  z-index: 5 !important;
+}

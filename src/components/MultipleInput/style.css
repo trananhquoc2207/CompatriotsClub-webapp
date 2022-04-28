@@ -1,0 +1,19 @@
+.table-multiple-input > thead > tr > th {
+  border: 0;
+  border-bottom: 1px solid #ced4da;
+  text-align: center;
+}
+.table-multiple-input > tbody > tr > td {
+  border: 0;
+  vertical-align: middle;
+}
+
+.table-multiple-input .checkbox {
+  text-align: center;
+}
+.table-multiple-input .hr {
+  margin: 15px auto;
+  height: 1px;
+  width: 90%;
+  background-color: #ced4da;
+}

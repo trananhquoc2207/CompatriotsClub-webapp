@@ -1,0 +1,17 @@
+@import "./icons.scss";
+@import "./bootstrap.scss";
+@import "./app.scss";
+@import "./custom.scss";
+
+#sidebar-menu {
+  ul {
+    li {
+      a {
+        i {
+          min-width: 2rem;
+        }
+      }
+    }
+  }
+}
+
