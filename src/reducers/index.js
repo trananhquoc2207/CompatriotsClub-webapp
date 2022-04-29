@@ -1,13 +1,11 @@
 import global from 'reducers/global';
 import dashboard from 'pages/dashboard/reducers/dashboard';
 import employee from 'pages/employee/reducers/employee';
-import kpi from 'pages/kpi/reducers/kpi';
 import attendance from 'pages/attendance/reducers/attendance';
 import schedule from 'pages/schedule/reducers/schedule';
 import shiftGroup from 'pages/ShiftGroup/reducers/ShiftGroup';
 import shift from 'pages/shift/reducers/shift';
 import department from 'pages/setting/department/reducers/department';
-import kiosk from 'pages/kiosk/reducers/kiosk';
 import unit from 'pages/unit/reducers/unit';
 import ratedTemperature from 'pages/setting/rated-temperature/reducers/temperature';
 import statistic from 'pages/statistic/temperature/reducers/statistic';
@@ -23,12 +21,10 @@ export default {
   global,
   dashboard,
   employee,
-  kpi,
   attendance,
   schedule,
   shift,
   department,
-  kiosk,
   unit,
   ratedTemperature,
   statistic,

@@ -15,21 +15,13 @@ import Dashboard from 'pages/dashboard/pages';
 // Employee
 import Employee from 'pages/employee/pages/EmployeesPage';
 import EmployeeDetails from 'pages/employee/pages/EmployeeDetailsPage';
-import KPIPage from 'pages/kpi/pages/KPIPage';
-import KPIDetailsPage from 'pages/kpi/pages/KPIDetailPage';
 
 // Contract
 import Contract from 'pages/contract/List';
 import ContractWarning from 'pages/contract/Warning';
 
-// Task
-import ProjectsPage from 'pages/task-management/project';
-import TaskPage from 'pages/task-management/task';
 
-// Salary
-import Salary from 'pages/salary';
-
-// Attendance
+// AttendanceSalary
 import AttendancesPage from 'pages/attendance/pages/AttendancesPage';
 import AttendanceDetailsPage from 'pages/attendance/pages/AttendanceDetailPage';
 import AttendancesHistoryPage from 'pages/attendance/pages/AttendancesHistoryPage';
@@ -37,14 +29,10 @@ import AttendancesHistoryPage from 'pages/attendance/pages/AttendancesHistoryPag
 // Time off
 import TimeOff from 'pages/time-off';
 
-// Deduction
-import Deduction from 'pages/deduction';
 
 // Shift management
 import ShiftManagement from 'pages/schedule/pages/SchedulePage';
 
-// Manternity
-import Manternity from 'pages/manternity';
 
 //Family
 import Family from 'pages/family/pages/FamilyPage';
@@ -62,12 +50,9 @@ import SettingAccount from 'pages/setting/Account';
 
 import SettingRecorder from 'pages/setting/Recorder';
 import SettingChangePassword from 'pages/setting/ChangePassword';
-import KioskPage from 'pages/kiosk/pages/KioskPage';
 import UnitPage from 'pages/unit/pages/UnitPage';
 import SettingRatedTemperature from 'pages/setting/rated-temperature/pages/RatedTemperaturePage';
 // task-management
-// import ProjectsPage from 'pages/TaskManagement/Project';
-
 // Statistic
 import ShiftGroupPage from 'pages/ShiftGroup/pages/ShiftGroupPage';
 import ShiftGroupEmployee from 'pages/ShiftGroup/pages/ShiftGroupEmployee';
@@ -103,18 +88,7 @@ const userRoutes = [
     component: EmployeeDetails,
     title: 'Employee details',
   },
-  {
-    exact: true,
-    path: '/kpi',
-    component: KPIPage,
-    title: 'Employee KPI',
-  },
-  {
-    exact: true,
-    path: '/kpi/:id',
-    component: KPIDetailsPage,
-    title: 'Employee KPI details',
-  },
+
   {
     exact: true,
     path: '/attendance',
@@ -151,11 +125,6 @@ const userRoutes = [
   { path: '/management/contract/list', component: Contract, title: 'Contract list' },
 
   {
-    path: '/salary',
-    component: isDevelopment ? Salary : DevelopmentPage,
-    title: 'Salary',
-  },
-  {
     path: '/schedule',
     component: ShiftManagement,
     title: 'Quản lý lịch làm việc',
@@ -171,11 +140,7 @@ const userRoutes = [
     component: ShiftGroupEmployee,
     title: 'Danh sách nhân viên nhóm đi ca',
   },
-  // Task management
-  { path: '/management/project/list', component: ProjectsPage, title: 'Project' },
-  { path: '/management/project/view', component: TaskPage, title: 'Task' },
 
-  // Time off
   {
     exact: true,
     path: '/management/time-off',
@@ -188,11 +153,8 @@ const userRoutes = [
     title: 'Time off',
   },
 
-  // Deduction
-  { path: '/management/deduction', component: Deduction, title: 'Deduction' },
 
   // Manternity
-  { path: '/management/manternity', component: Manternity, title: 'Manternity' },
 
   // Setting
 
@@ -270,11 +232,6 @@ const userRoutes = [
     title: 'Lý do bổ sung giờ công',
   },
 
-  {
-    path: '/kiosk',
-    component: KioskPage,
-    title: 'Quản lí Kios',
-  },
   {
     path: '/statistic/over-temperature',
     component: OverBodyTemperaturePage,
