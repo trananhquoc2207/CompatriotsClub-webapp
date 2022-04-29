@@ -34,11 +34,11 @@ export const WORK_STATUS = {
 
 export const LEAVING_STATUS = {
   0: {
-    label: 'Đã nghỉ việc',
+    label: 'Đã rời hội',
     color: '#da4453',
   },
   1: {
-    label: 'Đang làm việc',
+    label: 'Đang trong hội',
     color: '#37bc9b',
   },
 };

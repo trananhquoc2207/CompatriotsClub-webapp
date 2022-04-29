@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import styled from 'styled-components';
 
 import {
@@ -8,15 +8,9 @@ import {
 import Select from 'react-select';
 import SearchBar from 'components/SearchBar';
 
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  getLevelOneByUnit,
-  getLevelTwoByUnit,
-  getLevelThreeByUnit,
-  getLevelFourByUnit,
-} from 'pages/unit/actions/unit';
+import { useDispatch } from 'react-redux';
+
 import { setEmployeeFilter } from 'pages/employee/actions/employee';
-import { getScheduleGroups } from 'pages/schedule-group/actions/schedule-group';
 
 import { IMAGE_STATUS, LEAVING_STATUS } from 'pages/employee/utils/contants';
 
@@ -179,38 +173,11 @@ const LeftStatusSelectStyles = {
   }),
 };
 
-const scheduleGroupOptions = [
-  {
-    value: 'hasNoScheduleGroup',
-    label: 'Không có nhóm đi ca',
-  },
-  {
-    value: 'hasScheduleGroup',
-    label: 'Có nhóm đi ca',
-  },
-];
 
 const EmployeeFilter = () => {
   const [filter, setFilter] = useState({});
 
   const dispatch = useDispatch();
-  const {
-    levelOneByUnit: { data: levelOneByUnitList },
-    levelTwoByUnit: { data: levelTwoByUnitList },
-    levelThreeByUnit: { data: levelThreeByUnitList },
-    levelFourByUnit: { data: levelFourByUnitList },
-    getLevelOneByUnitLoading,
-    getLevelTwoByUnitLoading,
-    getLevelThreeByUnitLoading,
-  } = useSelector((state) => state.unit);
-  const {
-    attendanceHistoryFilter,
-  } = useSelector((state) => state.attendance);
-  const {
-    scheduleGroups: { data: scheduleGroupList },
-    getScheduleGroupLoading,
-  } = useSelector((state) => state.scheduleGroup);
-
   const onChange = (object) => {
     const merge = { ...filter, ...object };
     const payload =
@@ -227,64 +194,14 @@ const EmployeeFilter = () => {
     dispatch(setEmployeeFilter(payload));
   };
 
-  const loading = getLevelOneByUnitLoading || getLevelTwoByUnitLoading || getLevelThreeByUnitLoading;
-
-  useEffect(() => {
-    if (levelOneByUnitList.length === 0) {
-      dispatch(getLevelOneByUnit());
-    }
-    if (levelTwoByUnitList.length === 0) {
-      dispatch(getLevelTwoByUnit());
-    }
-    if (levelThreeByUnitList.length === 0) {
-      dispatch(getLevelThreeByUnit());
-    }
-    if (levelFourByUnitList.length === 0) {
-      dispatch(getLevelFourByUnit());
-    }
-    if (scheduleGroupList.length === 0) {
-      dispatch(getScheduleGroups({}));
-    }
-    if (attendanceHistoryFilter) {
-      setFilter(attendanceHistoryFilter);
-    }
-  }, []);
-
   return (
     <>
       <SearchBarWrapper>
-        <SearchBar text="Nhập mã nhân viên để tìm kiếm" onChange={(k) => onChange({ q: k })}>
+        <SearchBar text="Nhập tên hội viên cần tìm kiếm" onChange={(k) => onChange({ Keyword: k })}>
           <Row>
             <Col>
               <FormGroup>
-                <Label>Trạng thái lấy khuôn mặt</Label>
-                <Select
-                  isClearable
-                  placeholder=""
-                  styles={StatusSelectStyles}
-                  value={Object.keys(IMAGE_STATUS).reduce((object, option) => {
-                    // eslint-disable-next-line
-                    if (filter?.FaceIdStatus && option == filter.FaceIdStatus) {
-                      return {
-                        key: option,
-                        value: option,
-                        label: IMAGE_STATUS[option].label,
-                      };
-                    }
-                    return object;
-                  }, null)}
-                  options={Object.keys(IMAGE_STATUS).map((o) => ({
-                    key: o,
-                    value: o,
-                    label: IMAGE_STATUS[o].label,
-                  }))}
-                  onChange={(o) => onChange({ FaceIdStatus: o?.value ?? undefined })}
-                />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label>Trạng thái làm việc</Label>
+                <Label>Trạng thái</Label>
                 <Select
                   isClearable
                   placeholder=""
@@ -306,150 +223,6 @@ const EmployeeFilter = () => {
                     label: LEAVING_STATUS[o].label,
                   }))}
                   onChange={(o) => onChange({ isLeft: o?.value ?? undefined })}
-                />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label>Nhóm đi ca</Label>
-                <Select
-                  isClearable
-                  isLoading={getScheduleGroupLoading}
-                  placeholder="Chọn nhóm đi ca"
-                  styles={SelectStyles}
-                  // value={}
-                  options={
-                    (scheduleGroupList || []).reduce((options, scheduleGroup) =>
-                      ([...options, { value: scheduleGroup.id, label: `${scheduleGroup.code} | ${scheduleGroup.name}` }]),
-                    scheduleGroupOptions)
-                  }
-                  onChange={(option) => {
-                    if (!option) {
-                      onChange({ hasScheduleGroup: undefined, scheduleGroupId: undefined });
-                      return;
-                    }
-
-                    if (option.value.includes('hasNoScheduleGroup')) {
-                      onChange({ hasScheduleGroup: false, scheduleGroupId: undefined });
-                    } else if (option.value.includes('hasScheduleGroup')) {
-                      onChange({ hasScheduleGroup: true, scheduleGroupId: undefined });
-                    } else {
-                      onChange({ hasScheduleGroup: undefined, scheduleGroupId: option.value });
-                    }
-                  }}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <FormGroup>
-                <Label>Khối</Label>
-                <Select
-                  isClearable
-                  isLoading={loading}
-                  placeholder=""
-                  styles={SelectStyles}
-                  value={(levelOneByUnitList || []).reduce((object, option) => {
-                    // eslint-disable-next-line
-                    if (filter?.idDonVi && option.id == filter.idDonVi) {
-                      return {
-                        key: option.id,
-                        value: option.id,
-                        label: option.tenDonVi,
-                      };
-                    }
-                    return object;
-                  }, null)}
-                  options={(levelOneByUnitList || []).map((o) => ({
-                    key: o.id,
-                    value: o.id,
-                    label: o.tenDonVi,
-                  }))}
-                  onChange={(o) => onChange({ idDonVi: o?.value ?? undefined, loaiDonVi: 0 })}
-                />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label>Phòng</Label>
-                <Select
-                  isClearable
-                  isLoading={loading}
-                  placeholder=""
-                  styles={SelectStyles}
-                  value={(levelTwoByUnitList || []).reduce((object, option) => {
-                    // eslint-disable-next-line
-                    if (filter?.idDonVi && option.id == filter.idDonVi) {
-                      return {
-                        key: option.id,
-                        value: option.id,
-                        label: option.tenDonVi,
-                      };
-                    }
-                    return object;
-                  }, null)}
-                  options={(filter?.idDonVi && filter?.loaiDonVi < 1 ? levelTwoByUnitList.filter((o) => o.idDonViCha == filter?.idDonVi) : levelTwoByUnitList || []).map((o) => ({
-                    key: o.id,
-                    value: o.id,
-                    label: o.tenDonVi,
-                  }))}
-                  onChange={(o) => onChange({ idDonVi: o?.value ?? undefined, loaiDonVi: 1 })}
-                />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label>Bộ phận</Label>
-                <Select
-                  isClearable
-                  isLoading={loading}
-                  placeholder=""
-                  styles={SelectStyles}
-                  value={(levelThreeByUnitList || []).reduce((object, option) => {
-                    // eslint-disable-next-line
-                    if (filter?.idDonVi && option.id == filter.idDonVi) {
-                      return {
-                        key: option.id,
-                        value: option.id,
-                        label: option.tenDonVi,
-                      };
-                    }
-                    return object;
-                  }, null)}
-                  options={(filter?.idDonVi && filter?.loaiDonVi < 2 ? levelThreeByUnitList.filter((o) => o.idDonViCha == filter?.idDonVi) : levelThreeByUnitList || []).map((o) => ({
-                    key: o.id,
-                    value: o.id,
-                    label: o.tenDonVi,
-                  }))}
-                  onChange={(o) => onChange({ idDonVi: o?.value ?? undefined, loaiDonVi: 2 })}
-                />
-              </FormGroup>
-            </Col>
-            <Col>
-              <FormGroup>
-                <Label>Nhóm</Label>
-                <Select
-                  isClearable
-                  isLoading={loading}
-                  placeholder=""
-                  styles={SelectStyles}
-                  value={(levelFourByUnitList || []).reduce((object, option) => {
-                    if (filter?.idDonVi && option.id === filter.idDonVi) {
-                      return {
-                        key: option.id,
-                        value: option.id,
-                        label: option.tenDonVi,
-                      };
-                    }
-                    return object;
-                  }, null)}
-                  options={(filter?.idDonVi && filter?.loaiDonVi !== 3 ? levelFourByUnitList.filter((o) => o.idDonViCha == filter?.idDonVi) : levelFourByUnitList || []).map((o) => ({
-                    key: o.id,
-                    value: o.id,
-                    label: o.tenDonVi,
-                  }))}
-                  onChange={(o) => onChange({ idDonVi: o?.value ?? undefined, loaiDonVi: 3 })}
                 />
               </FormGroup>
             </Col>

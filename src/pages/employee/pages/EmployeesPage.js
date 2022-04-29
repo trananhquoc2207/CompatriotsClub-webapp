@@ -89,6 +89,7 @@ const EmployeesPage = () => {
       name: 'gender',
       align: 'left',
       label: 'Giới tính',
+      render: (r) => r.gender ?? '',
     },
     // {
     //   name: 'gioiTinh',
@@ -102,16 +103,10 @@ const EmployeesPage = () => {
       align: 'right',
     },
     {
-      name: 'chucVu',
-      align: 'left',
-      label: 'Chức vụ',
-      render: (r) => r.chucVu?.tenChucVu ?? '',
-    },
-    {
-      idcard: 'donVi',
+      idcard: 'idcard',
       align: 'left',
       label: 'Chứng minh nhân dân',
-      render: (r) => r.donVi?.tenDonVi ?? '',
+      render: (r) => r.idcard ?? '',
     },
     // {
     //   name: 'faceIdStatusEnum',
@@ -212,14 +207,14 @@ const EmployeesPage = () => {
             },
             {
               name: 'delete',
-              label: 'Chuyển nghỉ việc',
+              label: 'Xóa hội viên',
               color: 'danger',
               icon: 'exit',
-              action: (d) => setModalLeaving(d),
+              action: (d) => setModalDelete(d),
             },
             {
               name: 'switch',
-              label: 'Cập nhật quyền cho nhân viên',
+              label: 'Cập nhật quyền cho hội viên',
               color: 'secondary',
               icon: 'key',
               action: (d) => setModalSwitchAdmin(d),
