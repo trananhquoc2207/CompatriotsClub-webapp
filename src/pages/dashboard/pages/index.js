@@ -21,20 +21,8 @@ const headers = [
     route: '/management/employee/list',
   },
   {
-    title: 'Hợp đồng mới',
-    icon: 'id-card',
-    accessor: 'soNVMoiKyHD',
-    route: '/management/contract/list',
-  },
-  {
-    title: 'Hợp đồng bị cảnh cáo',
-    icon: 'message-square-x',
-    accessor: 'soNVSapHetHanHD',
-    route: '/management/contract/warning',
-  },
-  {
-    title: 'Yêu cầu nghỉ phép',
-    icon: 'timer',
+    title: 'Các bài viết',
+    icon: 'body',
     accessor: '',
     route: '/management/time-off',
   },

@@ -19,7 +19,6 @@ const getDashboards = () => (dispatch) => new Promise((resolve, reject) => {
     })
     .catch((error) => {
       dispatch(getDashboardFailure(error));
-      reject();
     });
 });
 

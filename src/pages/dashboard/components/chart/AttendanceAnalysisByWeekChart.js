@@ -9,10 +9,6 @@ import ReactEcharts from 'echarts-for-react';
 import Loader from 'components/Loader';
 import { WeekPicker } from 'components/date-picker';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { getDaysOfWeek } from 'utils/helpers';
-import { getAttendanceAnalysisByWeek, setAttendanceHistoryFilter } from 'pages/attendance/actions/attendance';
-import { ATTENDANCE_STATUS } from 'pages/attendance/utils/contants';
 
 const Wrapper = styled.div`
   position: relative;
@@ -67,108 +63,9 @@ const StyledButton = styled(Button)`
   }
 `;
 const AttendanceAnalysisByWeekChart = () => {
-  const [filter, setFilter] = useState({});
-  const defaultTime = getDaysOfWeek(new Date());
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const {
-    attendanceAnalysisByWeek,
-    getAttendanceAnalysisByWeekLoading,
-  } = useSelector((state) => state.attendance);
-
-  const data = useMemo(() => Object.keys(ATTENDANCE_STATUS).reduce((array, status, index) =>
-    (attendanceAnalysisByWeek || []).reduce((_array, { statuses }, jndex) => {
-      const found = (statuses || []).find((s) => s.status == status);
-      // eslint-disable-next-line no-param-reassign
-      _array[index].data[jndex] = found?.count ?? 0;
-      return _array;
-    }, array), Object.keys(ATTENDANCE_STATUS).map((key, jndex) => ({
-      key: jndex,
-      label: ATTENDANCE_STATUS[key].label,
-      color: ATTENDANCE_STATUS[key].color,
-      data: Array(7),
-    })),
-  ), [attendanceAnalysisByWeek]);
-
-  const options = useMemo(() => ({
-    grid: {
-      top: 60,
-      bottom: 20,
-      left: 36,
-      right: 8,
-    },
-    tooltip: {
-      trigger: 'axis',
-    },
-    legend: {},
-    xAxis: {
-      type: 'category',
-      data: getDaysOfWeek(filter?.TuNgay ? new Date(filter.TuNgay) : new Date()).map((d) => dayJS(d).format('DD/MM/YYYY')),
-    },
-    yAxis: {
-      type: 'value',
-    },
-    color: data.map(({ color }) => color),
-    series: data.map(({ key, label, data: _data }) => {
-      const week = getDaysOfWeek(filter?.TuNgay ? new Date(filter.TuNgay) : new Date());
-      return {
-        type: 'line',
-        name: label,
-        smooth: true,
-        data: _data.map((d, i) => ({
-          key,
-          value: d,
-          date: week[i],
-        })),
-      };
-    }),
-  }), [data]);
-
-  const handleClick = ({ data }) => {
-    dispatch(setAttendanceHistoryFilter({
-      trangthai: data.key,
-      Ngay: data.date.toISOString().split('T')[0],
-    }));
-    history.push('/attendance/history');
-  };
-
-  const getAnalysisByWeek = useCallback(() => {
-    if (filter?.TuNgay) {
-      dispatch(getAttendanceAnalysisByWeek(filter));
-    }
-  }, [dispatch, filter]);
-  useEffect(getAnalysisByWeek, [getAnalysisByWeek]);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-  const WeekPickerButton = forwardRef((props, ref) => {
-    const {
-      value,
-      ...rest
-    } = props;
-    const render = (d) => {
-      const date = d !== '' ? new Date(d) : new Date();
-      const week = getDaysOfWeek(date);
-      // setFilter({ TuNgay: dayJS(week[0]).format('YYYY-MM-DD'), DenNgay: dayJS(week[6]).format('YYYY-MM-DD') });
-      return (
-        <>
-          <span className="from">{dayJS(week[0]).format('DD-MM-YYYY')}</span>
-          <i className="bx bx-right-arrow-alt" />
-          <span className="to">{dayJS(week[6]).format('DD-MM-YYYY')}</span>
-        </>
-      );
-    };
-    return (
-      <StyledButton innerRef={ref} {...rest}>
-        {value && render(value)}
-        {!value && 'Thời gian'}
-      </StyledButton>
-    );
-  });
-
   return (
     <Wrapper>
-      <Loader inverted active={getAttendanceAnalysisByWeekLoading} />
+      <Loader />
       <div className="wrapper">
         <div className="header">
           <div className="title">
@@ -182,17 +79,12 @@ const AttendanceAnalysisByWeekChart = () => {
               range
               format
               maxDate={new Date()}
-              value={new Date(filter?.TuNgay ?? new Date())}
-              customInput={<WeekPickerButton />}
-              onChange={(f, t) => setFilter({ TuNgay: f, DenNgay: t })}
             />
-            <Button color="primary" className="btn" onClick={() => setFilter({ TuNgay: moment(defaultTime[0]).format('YYYY-MM-DD'), DenNgay: moment(defaultTime[6]).format('YYYY-MM-DD') })}>Tuần này</Button>
+            <Button color="primary" className="btn">Tuần này</Button>
           </div>
-          <ReactEcharts
-            option={options}
+          {/* <ReactEcharts
             style={{ minHeight: '355px' }}
-            onEvents={{ click: handleClick }}
-          />
+          /> */}
         </div>
       </div>
     </Wrapper>

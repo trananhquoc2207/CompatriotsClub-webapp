@@ -9,7 +9,6 @@ import {
   Modal, ModalHeader, ModalBody, ModalFooter,
   Card, CardHeader, CardBody,
 } from 'reactstrap';
-import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
 import NumberFormat from 'react-number-format';
 import DatePicker from 'react-datepicker';
@@ -19,13 +18,8 @@ import { notify } from 'utils/helpers';
 import daysOfWeek from 'assets/mocks/daysOfWeek.json';
 import projectApi from 'api/projectApi';
 import departmentApi from 'api/departmentApi';
-import unitApi from 'api/unitApi';
 import shiftApi from 'api/shiftApi';
-import unitType from 'assets/mocks/unitType.json';
 import { useDispatch, useSelector } from 'react-redux';
-import shiftGroupApi from 'api/shiftGroupApi';
-import { getUnitGroup } from 'pages/unit/actions/unit';
-import { getEmployees } from 'pages/employee/actions/employee';
 import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 import { getPermission } from 'pages/user-permission/permission/actions/Permission';
