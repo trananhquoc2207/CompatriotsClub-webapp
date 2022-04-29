@@ -71,7 +71,6 @@ const EmployeesPage = () => {
   } = useSelector((state) => state.global);
   const { data: employeeList, totalSizes } = employees;
   const loading = exportLoading || getEmployeesLoading;
-  console.log(employeeList);
   const columns = useMemo(() => ([
     {
       name: 'index',
