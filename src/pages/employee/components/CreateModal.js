@@ -27,6 +27,7 @@ import { notify } from "utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import genders from "assets/mocks/genders.json";
 
+
 const StyledModal = styled(Modal)`
   .modal-title {
     font-weight: 700;
@@ -77,7 +78,7 @@ const StyledCard = styled(Card)`
 `;
 
 const CreateModal = ({ open, onClose, onRefresh }) => {
-  const { errors, watch, trigger, register, setValue} =
+  const { errors, watch, trigger, register, setValue,handleSubmit} =
     useForm();
   const dispatch = useDispatch();
   const informationErrors =
@@ -107,8 +108,11 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     [employeeApi]
   );
 
+
+
+
   const onSubmit = async (d) => {
-    d.preventDefault()
+    //d.preventDefault()
     console.log(d);
     try {
       await employeeApi.post({
@@ -120,12 +124,17 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
       notify("success", "Đã thêm.");
       onRefresh();
     } catch (error) {
-      notify(
-        "danger",
-        error?.response?.error_message ??
-          error?.message ??
-          "Lỗi không thể xác định."
-      );
+      await employeeApi.post({
+        ...d,
+        // joinDate: dayJS(d.ngayBatDau).format('YYYY-MM-DD'),
+        // birth: dayJS(d.ngayBatDau).format('YYYY-MM-DD'),
+      });
+      // notify(
+      //   "danger",
+      //   error?.response?.error_message ??
+      //     error?.message ??
+      //     "Lỗi không thể xác định."
+      // );
     }
   };
   useEffect(() => {
@@ -149,10 +158,11 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     setValue("birth", new Date());
     setValue("joinDate", new Date());
 
-    setValue("gender", {
-      value: Object.keys(genders)[0],
-      label: genders[Object.keys(genders)[0]],
-    });
+    setValue("gender", 
+      // value: Object.keys(genders)[0],
+      // label: genders[Object.keys(genders)[0]],
+      0
+    );
   }, [register, setValue]);
 
   // const handleSubmit = (e)=>{
@@ -161,7 +171,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
   // }
   return (
      <StyledModal size="lg" isOpen={open}>
-      <Form onSubmit={(d) => onSubmit(d)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <ModalHeader toggle={onClose}>
           Thêm mới
         </ModalHeader>

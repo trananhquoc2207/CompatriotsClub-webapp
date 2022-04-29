@@ -56,7 +56,7 @@ const EmployeesPage = () => {
   const [modalFaceID, setModalFaceID] = useState(undefined);
   const [modalUploadImage, setModalUploadImage] = useState(undefined);
 
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(10);
 
   const history = useHistory();
@@ -162,8 +162,8 @@ const EmployeesPage = () => {
   const getData = useCallback(() => {
     dispatch(getEmployees({
       ...employeeFilter,
-      page_number: pageIndex,
-      page_size: pageSize,
+      PageIndex: pageIndex,
+      PageSize: pageSize,
       maNV: employeeFilter?.q,
       FaceIdStatus: employeeFilter?.FaceIdStatus,
       idDonVi: employeeFilter?.idDonVi,
@@ -184,7 +184,7 @@ const EmployeesPage = () => {
           columns={columns}
           data={
             (employeeList || [])
-              .map((o, i) => ({ ...o, index: (i + 1) + ((pageIndex - 1) * pageSize) }))
+              .map((o, i) => ({ ...o, index: (i + 1) + ((pageIndex) * (pageSize)) }))
           }
           totalRows={totalSizes}
           onPageChange={(index, size) => {
