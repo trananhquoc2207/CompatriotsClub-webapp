@@ -159,11 +159,11 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     setValue("joinDate", new Date());
 
     setValue("gender", 
-      // value: Object.keys(genders)[0],
-      // label: genders[Object.keys(genders)[0]],
       0
     );
   }, [register, setValue]);
+     
+     
 
   // const handleSubmit = (e)=>{
   //   e.preventDefault()
@@ -219,7 +219,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                 <Col xs={4}>
                   <FormGroup>
                     <Label className={classnames({ 'error__label': !!errors.gender })}>Giới tính</Label>
-                    <Select
+                    {/* <Select
                       styles={{
                         control: (base, state) => (
                           errors.gender
@@ -252,7 +252,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                         setValue('gender', value);
                         trigger('gender');
                       }}
-                    />
+                    /> */}
                     {(errors?.gender ?? false) && <FormFeedback>{errors?.gender?.message ?? ''}</FormFeedback>}
                   </FormGroup>
                 </Col>

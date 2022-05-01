@@ -17,7 +17,6 @@ import { exportExcel } from 'actions/global';
 import { getEmployees } from 'pages/employee/actions/employee';
 import apiLinks from 'utils/api-links';
 import LeavingModal from '../components/LeavingModal';
-import BackToWorkModal from '../components/BackToWorkModal';
 import SwitchAdminModal from '../components/SwitchAdminModal';
 import AvatarUploadModal from '../components/details/AvatarUploadModal';
 
@@ -266,11 +265,6 @@ const EmployeesPage = () => {
         data={modalLeaving}
         onRefresh={getData}
         onClose={() => setModalLeaving(undefined)}
-      />
-      <BackToWorkModal
-        data={modalBackToWork}
-        onRefresh={getData}
-        onClose={() => setModalBackToWork(undefined)}
       />
       <SwitchAdminModal
         data={modalSwitchAdmin}
