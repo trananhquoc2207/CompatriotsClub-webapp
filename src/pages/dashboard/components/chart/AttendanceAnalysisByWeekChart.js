@@ -69,7 +69,7 @@ const AttendanceAnalysisByWeekChart = () => {
       <div className="wrapper">
         <div className="header">
           <div className="title">
-            Thống kê chấm công theo tuần
+            Thống kê các bài viết
           </div>
         </div>
         <div className="body">

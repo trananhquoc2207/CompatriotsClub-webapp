@@ -38,7 +38,7 @@ const AttendanceAnalysisByDayChart = () => {
       <div className="wrapper">
         <div className="header">
           <div className="title">
-            Thống kê chấm công hôm nay
+            Thống kê thành viên truy cập
           </div>
         </div>
         {/* <div className="body">
