@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Row, Col } from 'reactstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { setContractDetailsSelected } from 'pages/employee/actions/employee';
+import { setContractDetailsSelected } from 'pages/member/actions/member';
 import { formatCurrency } from 'utils/helpers';
 
 const Wrapper = styled.div`

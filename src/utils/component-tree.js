@@ -57,7 +57,7 @@ const componentTree = [
           <i className="bx bx-user" />&nbsp;<span>{i18n.t('Personnel management')}</span>
         </Link>
         <ul className="sub-menu" aria-expanded="false">
-          <li><Link to="/employee">Hội viên</Link></li>
+          <li><Link to="/member">Hội viên</Link></li>
           <li><Link to="/family">Gia đình</Link></li>
           <li><Link to="/management/contract/list">Hội</Link></li>
           <li><Link to="/contact">Ban Liên lạc</Link></li>

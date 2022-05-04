@@ -12,8 +12,8 @@ import NotFoundPage from 'pages/utility/NotFoundPage';
 import Dashboard from 'pages/dashboard/pages';
 
 // Employee
-import Employee from 'pages/employee/pages/EmployeesPage';
-import EmployeeDetails from 'pages/employee/pages/EmployeeDetailsPage';
+import Employee from 'pages/member/pages/EmployeesPage';
+import EmployeeDetails from 'pages/member/pages/EmployeeDetailsPage';
 
 //Family
 import Contact from 'pages/contact/pages/ContactPage';
@@ -34,13 +34,13 @@ const userRoutes = [
   },
   {
     exact: true,
-    path: '/employee',
+    path: '/member',
     component: Employee,
     title: 'Employee list',
   },
   {
     exact: true,
-    path: '/employee/:id',
+    path: '/member/:id',
     component: EmployeeDetails,
     title: 'Employee details',
   },
@@ -74,7 +74,7 @@ const userRoutes = [
       const token = JSON.parse(localStorage.getItem(TOKEN));
       if (props.location.pathname === '/') {
         if ((token?.permissionList ?? []).includes(GroupKey.EMPLOYEE_DETAIL)) {
-          return <Redirect to={`/employee/${token?.idNhanVien ?? ''}`} />;
+          return <Redirect to={`/member/${token?.idNhanVien ?? ''}`} />;
         }
         return <Redirect to="/dashboard" />;
       }

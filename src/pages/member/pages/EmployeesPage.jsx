@@ -5,15 +5,15 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DataTable from 'components/data-table';
-import EmployeeFilter from 'pages/employee/components/EmployeeFilter';
-import CreateModal from 'pages/employee/components/CreateModal';
-import UploadModal from 'pages/employee/components/UploadModal';
-import UpdateModal from 'pages/employee/components/UpdateModal';
-import DeleteModal from 'pages/employee/components/DeleteModal';
+import EmployeeFilter from 'pages/member/components/EmployeeFilter';
+import CreateModal from 'pages/member/components/CreateModal';
+import UploadModal from 'pages/member/components/UploadModal';
+import UpdateModal from 'pages/member/components/UpdateModal';
+import DeleteModal from 'pages/member/components/DeleteModal';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { exportExcel } from 'actions/global';
-import { getEmployees } from 'pages/employee/actions/employee';
+import { getEmployees } from 'pages/member/actions/member';
 import apiLinks from 'utils/api-links';
 import LeavingModal from '../components/LeavingModal';
 import SwitchAdminModal from '../components/SwitchAdminModal';
@@ -159,7 +159,7 @@ const EmployeesPage = () => {
               label: 'Chi tiết',
               color: 'info',
               icon: 'detail',
-              action: (d) => history.push(`/employee/${d.id}`, { from: history.location.pathname }),
+              action: (d) => history.push(`/member/${d.id}`, { from: history.location.pathname }),
             },
             {
               name: 'edit',

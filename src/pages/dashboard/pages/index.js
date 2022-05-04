@@ -18,7 +18,7 @@ const headers = [
     title: 'Tổng thành viên',
     icon: 'body',
     accessor: 'tongSoNhanVien',
-    route: '/management/employee/list',
+    route: '/management/member/list',
   },
   {
     title: 'Các bài viết',

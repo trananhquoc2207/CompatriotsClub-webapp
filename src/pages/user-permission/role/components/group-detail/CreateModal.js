@@ -15,7 +15,7 @@ import { notify } from 'utils/helpers';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getUnitGroup } from 'pages/unit/actions/unit';
-import { getEmployees } from 'pages/employee/actions/employee';
+import { getEmployees } from 'pages/member/actions/member';
 import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 

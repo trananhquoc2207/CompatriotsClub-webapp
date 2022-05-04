@@ -1,4 +1,4 @@
-import types from 'pages/employee/actions/types';
+import types from 'pages/member/actions/types';
 
 const INITIAL_STATE = {
   contractDetailsSelected: undefined,

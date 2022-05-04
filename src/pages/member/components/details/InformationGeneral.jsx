@@ -4,12 +4,12 @@ import styled from 'styled-components';
 
 import Loader from 'components/Loader';
 import CustomToolTip from 'components/CustomToolTip';
-import FaceIDModal from 'pages/employee/components/FaceIDModal';
-import AvatarUploadModal from 'pages/employee/components/details/AvatarUploadModal';
+import FaceIDModal from 'pages/member/components/FaceIDModal';
+import AvatarUploadModal from 'pages/member/components/details/AvatarUploadModal';
 
 import { useSelector } from 'react-redux';
 import { useAuth } from 'hooks/';
-import { IMAGE_STATUS, WORK_STATUS } from 'pages/employee/utils/contants';
+import { IMAGE_STATUS, WORK_STATUS } from 'pages/member/utils/contants';
 
 import avatar from 'assets/images/users/avatar_default.png';
 
@@ -191,8 +191,8 @@ console.log(employeeDetails);
     <Wrapper isAdmin={isAdmin()}>
       <Loader inverted active={getEmployeeDetailsLoading} />
       <div className="wrapper">
-        {(history.location?.state?.from ?? '') === '/employee' && (
-          <div className="back" onClick={() => history.push('/employee')}>
+        {(history.location?.state?.from ?? '') === '/member' && (
+          <div className="back" onClick={() => history.push('/member')}>
             <i className="bx bx-arrow-back" />
           </div>
         )}

@@ -10,9 +10,9 @@ import SearchBar from 'components/SearchBar';
 
 import { useDispatch } from 'react-redux';
 
-import { setEmployeeFilter } from 'pages/employee/actions/employee';
+import { setEmployeeFilter } from 'pages/member/actions/member';
 
-import { IMAGE_STATUS, LEAVING_STATUS } from 'pages/employee/utils/contants';
+import { IMAGE_STATUS, LEAVING_STATUS } from 'pages/member/utils/contants';
 
 const SearchBarWrapper = styled.div`
   > div {

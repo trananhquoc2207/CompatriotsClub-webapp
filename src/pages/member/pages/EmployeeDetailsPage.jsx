@@ -6,12 +6,12 @@ import {
   Row,
   Col,
 } from 'reactstrap';
-import InformationGeneral from 'pages/employee/components/details/InformationGeneral';
-import Collapse from 'pages/employee/components/details/Collapse';
-import ContractDetails from 'pages/employee/components/details/ContractDetails';
+import InformationGeneral from 'pages/member/components/details/InformationGeneral';
+import Collapse from 'pages/member/components/details/Collapse';
+import ContractDetails from 'pages/member/components/details/ContractDetails';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getEmployeeDetails } from 'pages/employee/actions/employee';
+import { getEmployeeDetails } from 'pages/member/actions/member';
 
 const EmployeeDetailsPage = () => {
   const { id } = useParams();
