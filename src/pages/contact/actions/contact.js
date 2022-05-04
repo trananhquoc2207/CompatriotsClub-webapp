@@ -16,25 +16,6 @@ const getContacts = (p) => async (dispatch) => {
  
 };
 
-// const getContactGroupRequest = () => ({ type: types.GET_CONTACT_GROUP_REQUEST });
-// const getContactGrouptSuccess = (response) => ({ type: types.GET_CONTACT_GROUP_SUCCESS, payload: response });
-// const getContactGroupFailure = (error) => ({ type: types.GET_CONTACT_GROUP_FAILURE, payload: error });
-
-// const getContactGroup = (p) => async (dispatch) => {
-//   try {
-//     dispatch(getContactGroupRequest());
-//     const { success, totalCounts, data } = await contactApi.get(p);
-//     if (success) {
-//       dispatch(getContactGrouptSuccess({ data, totalCounts }));
-//     }
-//   } catch (error) {
-//     dispatch(getContactGroupFailure(error));
-//   }
-// };
-
-
-
 export {
   getContacts,
- // getContactGroup,
 };
