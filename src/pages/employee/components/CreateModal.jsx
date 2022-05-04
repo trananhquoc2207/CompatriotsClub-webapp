@@ -82,6 +82,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     useForm();
   const dispatch = useDispatch();
   const informationErrors =
+  !!errors.code ||
     !!errors.familyId ||
     !!errors.groupId ||
     !!errors.name ||
@@ -113,6 +114,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
 
   const onSubmit = async (d) => {
     //d.preventDefault()
+    console.log("testtttttttttt");
     console.log(d);
     try {
       await employeeApi.post({
@@ -143,10 +145,8 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     register("name", { required: "Bắt buộc phải nhập tên nhân viên" });
     register("birth", { required: "Bắt buộc phải nhập ngày sinh" });
     register("joinDate", new Date());
-    //setValue('gender', { required: 'Bắt buộc phải nhập tên nhân viên' });
     register("gender", { required: "Bắt buộc phải chọn giới tính" });
     register("notes", { required: "Bắt buộc phải nhập tên nhân viên" });
-    // register('addres', { required: 'Bắt buộc phải nhập tên nhân viên' });
     register("email", { required: "Bắt buộc phải nhập tên nhân viên" });
     register("phoneNumber", { required: "Bắt buộc phải nhập tên nhân viên" });
     register("word", { required: "Bắt buộc phải nhập tên nhân viên" });
@@ -172,6 +172,21 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
             </CardHeader>
             <CardBody className={classnames({ 'disabled': !accordionInfomation })}>
               <Row>
+              <Col xs={4}>
+                  <FormGroup>
+                    <Label className={classnames({ 'error__label': !!errors.code })}>Mã hội viên</Label>
+                    <Input
+                      placeholder="Nhập mã hội viên"
+                      className={classnames('form-control', { 'is-invalid': !!errors.code })}
+                      defaultValue={watch('code') || ''}
+                      onBlur={({ target: { value } }) => {
+                        setValue('code', value);
+                        trigger('code');
+                      }}
+                    />
+                    {(errors?.email ?? false) && <FormFeedback>{errors?.email?.message ?? ''}</FormFeedback>}
+                  </FormGroup>
+                </Col>
                 <Col xs={4}>
                   <FormGroup>
                     <Label className={classnames({ 'error__label': !!errors.name })}>Tên hội viên</Label>
@@ -206,6 +221,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                     {(errors?.birth ?? false) && <FormFeedback>{errors?.birth?.message ?? ''}</FormFeedback>}
                   </FormGroup>
                 </Col>
+
                 <Col xs={4}>
                   <FormGroup>
                     <Label className={classnames({ 'error__label': !!errors.gender })}>Giới tính</Label>
@@ -282,23 +298,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                   </FormGroup>
                 </Col>
               </Row>
-              <Row>
-                <Col xs={6}>
-                  <FormGroup>
-                    <Label className={classnames({ 'error__label': !!errors.notes })}>Ghi chú</Label>
-                    <Input
-                      placeholder="Ghi chú"
-                      className={classnames('form-control', { 'is-invalid': !!errors.notes })}
-                      defaultValue={watch('notes') || ''}
-                      onBlur={({ target: { value } }) => {
-                        setValue('notes', value );
-                        trigger('notes');
-                      }}
-                    />
-                    {(errors?.notes ?? false) && <FormFeedback>{errors?.notes?.message ?? ''}</FormFeedback>}
-                  </FormGroup>
-                </Col>
-              </Row>
+           
               <Row>
               </Row>
               <Row>
@@ -350,9 +350,25 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                   </FormGroup>
                 </Col>
               </Row>
+              <Row>
+                <Col xs={6}>
+                  <FormGroup>
+                    <Label className={classnames({ 'error__label': !!errors.notes })}>Ghi chú</Label>
+                    <Input
+                      placeholder="Ghi chú"
+                      className={classnames('form-control', { 'is-invalid': !!errors.notes })}
+                      defaultValue={watch('notes') || ''}
+                      onBlur={({ target: { value } }) => {
+                        setValue('notes', value );
+                        trigger('notes');
+                      }}
+                    />
+                    {(errors?.notes ?? false) && <FormFeedback>{errors?.notes?.message ?? ''}</FormFeedback>}
+                  </FormGroup>
+                </Col>
+              </Row>
             </CardBody>
           </StyledCard>
-
         </ModalBody>
         <ModalFooter>
           <Button type="submit" color="success">Xác nhận</Button>

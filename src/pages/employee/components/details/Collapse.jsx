@@ -13,8 +13,8 @@ const accordions = [
   },
   {
     active: false,
-    icon: 'shield',
-    title: 'Bảo hiểm',
+    icon: 'run',
+    title: 'Tóm tắt tiểu sử',
     children: <InsuranceDetails />,
   },
 ];

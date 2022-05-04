@@ -186,7 +186,7 @@ const InformationGeneral = ({ onRefresh }) => {
     employeeDetails,
     getEmployeeDetailsLoading,
   } = useSelector((state) => state.employee);
-
+console.log(employeeDetails);
   return (
     <Wrapper isAdmin={isAdmin()}>
       <Loader inverted active={getEmployeeDetailsLoading} />
@@ -206,10 +206,11 @@ const InformationGeneral = ({ onRefresh }) => {
             </div>
           </div>
           <div className="header__name">
-            {employeeDetails?.tenNV ?? '-'}
+            {employeeDetails?.name ?? '-'}
           </div>
           <div className="header__position">
-            <span>{employeeDetails?.ChucVu?.tenChucVu ?? '-'}</span>
+            {/* <span>{employeeDetails?.ChucVu?.tenChucVu ?? '-'}</span> */}
+            <span>Chức vụ</span>
           </div>
         </div>
         <div className="content">
@@ -230,35 +231,11 @@ const InformationGeneral = ({ onRefresh }) => {
               );
             })()}
           </div>
-          <div className="item">
-            {(() => {
-              const index = employeeDetails?.faceIdStatusEnum ?? 0;
-              const { label } = IMAGE_STATUS[index];
-              const { color } = IMAGE_STATUS[index];
-              return (
-                <>
-                  <span className="item__label">Face ID</span>
-                  <span className="item__content">
-                    <StatusWrapper color={color}>
-                      <span
-                        id={`image-status_${employeeDetails?.id ?? 0}`}
-                        className={(index === 0 || index === 1) && 'hover'}
-                        onClick={() => (index === 0 || index === 1) && Boolean(employeeDetails?.id ?? false) && setModalFaceID(employeeDetails)}
-                      >
-                        {label}
-                      </span>
-                      {(index === 0 || index === 1) && Boolean(employeeDetails?.id ?? false) && (
-                        <CustomToolTip id={`image-status_${employeeDetails?.id ?? 0}`} message="Lấy khuôn mặt" />
-                      )}
-                    </StatusWrapper>
-                  </span>
-                </>
-              );
-            })()}
-          </div>
+        
           <div className="item">
             <span className="item__label">Số điện thoại</span>
-            <span className="item__content">{(employeeDetails?.soDienThoai ?? '') !== '' ? employeeDetails.soDienThoai.replace(/\D/g, '').replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3') : '-'}</span>
+            {/* <span className="item__content">{(employeeDetails?.phoneNumber ?? '') !== '' ? employeeDetails.phoneNumber.replace(/\D/g, '').replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3') : '-'}</span> */}
+            <span className="item__content">{employeeDetails?.phoneNumber ?? '-'}</span>
           </div>
           <div className="item">
             <span className="item__label">Email</span>
@@ -266,11 +243,8 @@ const InformationGeneral = ({ onRefresh }) => {
           </div>
           <div className="item">
             <span className="item__label">Đơn vị</span>
-            <span className="item__content">{employeeDetails?.DonVi?.tenDonVi ?? '-'}</span>
-          </div>
-          <div className="item">
-            <span className="item__label">Chi nhánh</span>
-            <span className="item__content">{employeeDetails?.ChiNhanh?.tenChiNhanh ?? '-'}</span>
+            {/* <span className="item__content">{employeeDetails?.DonVi?.tenDonVi ?? '-'}</span> */}
+            <span className="item__content">Tên hội</span>
           </div>
         </div>
       </div>

@@ -41,32 +41,38 @@ const table = [
   [
     {
       label: 'Họ và tên',
-      accessor: 'tenNV',
+      accessor: 'name',
     },
     {
       label: 'Giới tính',
-      accessor: 'gioiTinh',
-      render: (d) => genders[d.gioiTinh] || '-',
+      accessor: 'gender',
+      render: (d) => genders[d.gioiTinh] || 'Chưa xác định',
     },
   ],
   [
     {
       label: 'Ngày sinh',
-      accessor: 'ngaySinh',
-      render: (d) => d?.ngaySinh ? dayJS(d.ngaySinh).format('DD/MM/YYYY') : '-',
+      accessor: 'birth',
+      render: (d) => d?.birth ? dayJS(d.birth).format('DD/MM/YYYY') : '-',
+    },
+    {
+      label: 'Ngày vào hội',
+      accessor: 'joinDate',
+      render: (d) => d?.joinDate ? dayJS(d.joinDate).format('DD/MM/YYYY') : '-',
     },
   ],
   [
     {
       label: 'Địa chỉ',
       accessor: 'diaChi',
+      render: (d) => 'Địa chỉ'
     },
   ],
   [
     {
       label: 'Số điện thoại',
-      accessor: 'soDienThoai',
-      render: (d) => (d?.soDienThoai ?? '') !== '' ? d.soDienThoai.replace(/\D/g, '').replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3') : '-',
+      accessor: 'phoneNumber',
+      //render: (d) => (d?.soDienThoai ?? '') !== '' ? d.soDienThoai.replace(/\D/g, '').replace(/(\d{4})(\d{3})(\d{3})/, '$1.$2.$3') : '-',
     },
     {
       label: 'Email',
@@ -77,31 +83,33 @@ const table = [
     {
       label: 'Quốc tịch',
       accessor: 'quocTich',
+      render: (d) => 'Việt Nam'
     },
   ],
   [
     {
       label: 'CMND/CCCD',
-      accessor: 'canCuocCongDan',
+      accessor: 'idcard',
     },
   ],
   [
     {
       label: 'Trình độ giáo dục',
       accessor: 'BangCap',
-      render: (d) => d?.BangCap ? d?.BangCap?.tenBangCap ?? '' : '-',
+    //  render: (d) => d?.BangCap ? d?.BangCap?.tenBangCap ?? '' : '-',
     },
   ],
   [
     {
       label: 'Tình trạng hôn nhân',
       accessor: 'tinhTrangHonNhan',
-      render: (d) => materialStatuses[d.tinhTrangHonNhan] || '-',
+    //  render: (d) => materialStatuses[d.tinhTrangHonNhan] || '-',
+    render: (d) => 'Đọc thân'
     },
     {
-      label: 'Số người phụ thuộc',
-      accessor: 'soNguoiPhuThuoc',
-      render: (d) => d?.soNguoiPhuThuoc ?? '-',
+      label: 'Công việc',
+      accessor: 'word',
+    //  render: (d) => materialStatuses[d.tinhTrangHonNhan] || '-',
     },
   ],
 ];

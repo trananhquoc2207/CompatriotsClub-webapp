@@ -64,7 +64,6 @@ const EmployeesPage = () => {
     employees,
     getEmployeesLoading,
   } = useSelector((state) => {
-    console.log(state);
     return state.employee});
   const {
     exportLoading,
