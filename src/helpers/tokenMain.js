@@ -1,4 +1,4 @@
-const TOKEN_KEY = 'HR_SYSTEM';
+const TOKEN_KEY = 'CompatriotsClub';
 export const getToken = (key = TOKEN_KEY) => {
     return localStorage.getItem(key);
 };
