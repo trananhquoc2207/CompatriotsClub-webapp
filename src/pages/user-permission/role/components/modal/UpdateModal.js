@@ -7,27 +7,10 @@ import {
   Row, Col,
   Form, FormGroup, FormFeedback, Label, Input, Button,
   Modal, ModalHeader, ModalBody, ModalFooter, NavLink,
-  NavItem,
-  TabContent,
-  Nav,
-  TabPane,
-  CardTitle,
-  Card, CardHeader, CardBody,
+  Card
 } from 'reactstrap';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import NumberFormat from 'react-number-format';
-import DatePicker from 'react-datepicker';
-import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
-import daysOfWeek from 'assets/mocks/daysOfWeek.json';
-import projectApi from 'api/projectApi';
-import departmentApi from 'api/departmentApi';
-import shiftApi from 'api/shiftApi';
-import { useDispatch, useSelector } from 'react-redux';
-import shiftGroupApi from 'api/shiftGroupApi';
-import { ErrorMessage } from '@hookform/error-message';
+import { useDispatch } from 'react-redux';
 import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 

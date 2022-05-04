@@ -9,15 +9,8 @@ import {
   Modal, ModalHeader, ModalBody, ModalFooter,
   Card, CardHeader, CardBody,
 } from 'reactstrap';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import NumberFormat from 'react-number-format';
-import DatePicker from 'react-datepicker';
-import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 
-import shiftApi from 'api/shiftApi';
 import { useDispatch, useSelector } from 'react-redux';
 
 const StyledModal = styled(Modal)`

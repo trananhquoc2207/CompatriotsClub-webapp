@@ -17,7 +17,6 @@ import departmentApi from 'api/departmentApi';
 import positionApi from 'api/positionApi';
 import contractTypeApi from 'api/contractTypeApi';
 import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 import genders from 'assets/mocks/genders.json';
 import materialStatuses from 'assets/mocks/material-status.json';
@@ -116,12 +115,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 			return data.map((o) => ({ value: o.id, label: o.tenChucVu }));
 		}
 	}, [positionApi]);
-	const getSites = useCallback(async (p) => {
-		const { success, data } = await siteApi.get({ tenCN: p });
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenChiNhanh }));
-		}
-	}, [siteApi]);
 
 	const onSubmit = async (d) => {
 		try {
@@ -562,7 +555,7 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 										{(errors?.idChucVu ?? false) && <FormFeedback>{errors?.idChucVu?.message ?? ''}</FormFeedback>}
 									</FormGroup>
 								</Col>
-								<Col xs={6}>
+								{/* <Col xs={6}>
 									<FormGroup>
 										<Label className={classnames({ 'error__label': !!errors.idChiNhanh })}>Chi nhánh</Label>
 										<AsyncSelect
@@ -603,7 +596,7 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 										/>
 										{(errors?.idChiNhanh ?? false) && <FormFeedback>{errors?.idChiNhanh?.message ?? ''}</FormFeedback>}
 									</FormGroup>
-								</Col>
+								</Col> */}
 							</Row>
 						</CardBody>
 					</StyledCard>

@@ -4,20 +4,13 @@ import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import dayJS from 'dayjs';
 import {
-  Row, Col,
-  Form, FormGroup, FormFeedback, Label, Input, Button,
+  Form,  Button,
   Modal, ModalHeader, ModalBody, ModalFooter,
-  Card, CardHeader, CardBody,
+  Card
 } from 'reactstrap';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import NumberFormat from 'react-number-format';
-import DatePicker from 'react-datepicker';
-import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
+
 import { notify } from 'utils/helpers';
 
-import shiftApi from 'api/shiftApi';
 import { useDispatch, useSelector } from 'react-redux';
 
 const StyledModal = styled(Modal)`

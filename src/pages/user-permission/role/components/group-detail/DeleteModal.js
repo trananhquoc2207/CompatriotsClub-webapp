@@ -2,7 +2,6 @@ import React, { useCallback } from 'react';
 
 import { Modal, ModalHeader, ModalBody, Button } from 'reactstrap';
 import { notify } from 'utils/helpers';
-import shiftGroupApi from 'api/shiftGroupApi';
 import apiLinks from 'utils/api-links';
 import httpClient from 'utils/http-client';
 

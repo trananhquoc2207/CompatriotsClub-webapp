@@ -17,7 +17,6 @@ import departmentApi from 'api/departmentApi';
 import positionApi from 'api/positionApi';
 import contractTypeApi from 'api/contractTypeApi';
 import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 import genders from 'assets/mocks/genders.json';
 import materialStatuses from 'assets/mocks/material-status.json';
@@ -122,13 +121,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenDonVi }));
 		}
 	}, [positionApi]);
-	const getSites = useCallback(async (p) => {
-		const { success, data } = await siteApi.get({ tenCN: p });
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenChiNhanh }));
-		}
-	}, [siteApi]);
-
 	const onSubmit = async (d) => {
 		try {
 			await employeeApi.put(d?.id ?? 0, {

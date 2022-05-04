@@ -9,14 +9,9 @@ import {
 	Modal, ModalHeader, ModalBody, ModalFooter,
 	Card, CardHeader, CardBody,
 } from 'reactstrap';
-import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
-import NumberFormat from 'react-number-format';
 import { notify } from 'utils/helpers';
 
-import projectApi from 'api/projectApi';
 import contactApi from 'api/contactApi';
-import shiftApi from 'api/shiftApi';
 import contactType from 'assets/mocks/contactType.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../actions/contact';
@@ -86,18 +81,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
 	const { contacts, getContactLoading } = useSelector((s) => s.contact);
 	const { data: contactList, totalSizes } = contacts;
 
-	/* const getContacts = async () => {
-		const { success, data } = await contactApi.get();
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenDonVi }));
-		}
-	}; */
-	const getShifts = useCallback(async (p) => {
-		const { success, data } = await shiftApi.get({ Ma: p });
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: `${o.tenCa} (${o.gioVaoCa} - ${o.gioRaCa})` }));
-		}
-	}, [shiftApi]);
 	const onSubmit = async (d) => {
 		try {
 			await contactApi.post({

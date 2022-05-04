@@ -14,7 +14,6 @@ import NumberFormat from 'react-number-format';
 import { notify } from 'utils/helpers';
 
 import contactApi from 'api/contactApi';
-import shiftApi from 'api/shiftApi';
 import contactType from 'assets/mocks/contactType.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../actions/contact';
@@ -91,12 +90,6 @@ const UpdateModal = ({ data, open, onClose, onRefresh }) => {
 			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenDonVi }));
 		}
 	}; */
-	const getShifts = useCallback(async (p) => {
-		const { success, data } = await shiftApi.get({ Ma: p });
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: `${o.tenCa} (${o.gioVaoCa} - ${o.gioRaCa})` }));
-		}
-	}, [shiftApi]);
 
 	const onSubmit = async (d) => {
 		try {
@@ -179,7 +172,7 @@ const UpdateModal = ({ data, open, onClose, onRefresh }) => {
 								<AsyncSelect
 									cacheOptions
 									defaultOptions
-									loadOptions={getShifts}
+									//loadOptions={getShifts}
 									loadingMessage={() => 'Đang lấy dữ liệu...'}
 									noOptionsMessage={() => 'Không có dữ liệu'}
 									defaultValue={watch('caLamViecId') || undefined}

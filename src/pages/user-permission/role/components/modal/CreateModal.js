@@ -2,22 +2,13 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import dayJS from 'dayjs';
 import {
   Row, Col,
   Form, FormGroup, FormFeedback, Label, Input, Button,
-  Modal, ModalHeader, ModalBody, ModalFooter, NavLink,
-  NavItem,
-  TabContent,
-  Nav,
-  TabPane,
-  CardTitle,
-  Card, CardHeader, CardBody,
+  Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
 import { notify } from 'utils/helpers';
-import { useDispatch, useSelector } from 'react-redux';
-import shiftGroupApi from 'api/shiftGroupApi';
-import { ErrorMessage } from '@hookform/error-message';
+import { useDispatch } from 'react-redux';
 import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 

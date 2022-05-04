@@ -17,7 +17,6 @@ import certificateApi from 'api/certificateApi';
 import positionApi from 'api/positionApi';
 import contractTypeApi from 'api/contractTypeApi';
 import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import genders from 'assets/mocks/genders.json';
@@ -145,12 +144,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
       return data.slice(0, 150).map((o) => ({ value: o.id, label: o.tenDonVi }));
     }
   }, [positionApi]);
-  const getSites = useCallback(async (p) => {
-    const { success, data } = await siteApi.get({ tenCN: p });
-    if (success) {
-      return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenChiNhanh }));
-    }
-  }, [siteApi]);
   const isAvailableCode = useCallback(async (p) => {
     try {
       const { data } = await employeeApi.getCode(p);

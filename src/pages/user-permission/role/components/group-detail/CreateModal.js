@@ -9,19 +9,11 @@ import {
   Modal, ModalHeader, ModalBody, ModalFooter,
   Card, CardHeader, CardBody,
 } from 'reactstrap';
-import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
-import NumberFormat from 'react-number-format';
-import DatePicker from 'react-datepicker';
 import employeeApi from 'api/employeeApi';
-import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
-import daysOfWeek from 'assets/mocks/daysOfWeek.json';
-import projectApi from 'api/projectApi';
-import departmentApi from 'api/departmentApi';
-import shiftApi from 'api/shiftApi';
+
 import { useDispatch, useSelector } from 'react-redux';
-import shiftGroupApi from 'api/shiftGroupApi';
 import { getUnitGroup } from 'pages/unit/actions/unit';
 import { getEmployees } from 'pages/employee/actions/employee';
 import httpClient from 'utils/http-client';
@@ -98,12 +90,6 @@ const CreateModal = ({ data, onClose, onRefresh }) => {
     getEmployeesLoading,
   } = useSelector((state) => state.employee);
   const { data: employeeList } = employees;
-  const getShifts = useCallback(async (p) => {
-    const { success, data } = await shiftApi.get({ Ma: p });
-    if (success) {
-      return data.slice(0, 10).map((o) => ({ value: o.id, label: `${o.tenCa} (${o.gioVaoCa} - ${o.gioRaCa})` }));
-    }
-  }, [shiftApi]);
   const handleFilterEmployee = useCallback(async (p) => {
     const { success, data } = await employeeApi.get({ maNV: p });
     if (success) {
