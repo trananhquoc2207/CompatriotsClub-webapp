@@ -46,7 +46,10 @@ const table = [
     {
       label: 'Giới tính',
       accessor: 'gender',
-      render: (d) => genders[d.gioiTinh] || 'Chưa xác định',
+      render: (r) =>{
+        if( r.gender==0)
+          return 'Nam'
+         return  'Nữ'},
     },
   ],
   [

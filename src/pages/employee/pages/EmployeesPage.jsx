@@ -88,14 +88,11 @@ const EmployeesPage = () => {
       name: 'gender',
       align: 'left',
       label: 'Giới tính',
-      render: (r) => r.gender ?? '',
+      render: (r) =>{
+        if( r.gender==0)
+          return 'Nam'
+         return  'Nữ'},
     },
-    // {
-    //   name: 'gioiTinh',
-    //   label: 'Giới tính',
-    //   align: 'left',
-    //   render: (r) => genders[r.gioiTinh || 0],
-    // },
     {
       name: 'phoneNumber',
       label: 'Số điện thoại',
@@ -107,32 +104,6 @@ const EmployeesPage = () => {
       label: 'Chứng minh nhân dân',
       render: (r) => r.idcard ?? '',
     },
-    // {
-    //   name: 'faceIdStatusEnum',
-    //   align: 'center',
-    //   label: 'Face ID',
-    //   render: (r) => {
-    //     // eslint-disable-next-line
-    //     const index = r?.faceIdStatusEnum ?? 0;
-    //     const { label } = IMAGE_STATUS[index];
-    //     const { color } = IMAGE_STATUS[index];
-
-    //     return (
-    //       <ImageStatusWrapper color={color}>
-    //         <span
-    //           id={`image-status_${r.index}`}
-    //           className={(index === 0 || index === 1) && 'hover'}
-    //           onClick={() => (index === 0 || index === 1) && setModalUploadImage(r)}
-    //         >
-    //           {label}
-    //         </span>
-    //         {(index === 0 || index === 1) && (
-    //           <CustomToolTip id={`image-status_${r.index}`} message="Cập nhật FaceID" />
-    //         )}
-    //       </ImageStatusWrapper>
-    //     );
-    //   },
-    // },
   ]), [setModalUploadImage]);
   const exportReport = useCallback((url, fileName) => {
     dispatch(exportExcel({
@@ -140,9 +111,6 @@ const EmployeesPage = () => {
       url,
       params: {
         ...employeeFilter,
-        maNV: employeeFilter?.q,
-        FaceIdStatus: employeeFilter?.FaceIdStatus,
-        idDonVi: employeeFilter?.idDonVi,
         isLeft:
           typeof employeeFilter.isLeft !== 'undefined'
           ? !!employeeFilter.isLeft.includes('0')
@@ -157,9 +125,6 @@ const EmployeesPage = () => {
       ...employeeFilter,
       PageIndex: pageIndex,
       PageSize: pageSize,
-      maNV: employeeFilter?.q,
-      FaceIdStatus: employeeFilter?.FaceIdStatus,
-      idDonVi: employeeFilter?.idDonVi,
       isLeft:
         typeof employeeFilter.isLeft !== 'undefined'
         ? !!employeeFilter.isLeft.includes('0')
@@ -173,7 +138,7 @@ const EmployeesPage = () => {
         <EmployeeFilter />
         <DataTable
           // loading={loading}
-          title="Danh sách nhân viên"
+          title="Danh sách hội viên"
           columns={columns}
           data={
             (employeeList || [])
@@ -228,19 +193,19 @@ const EmployeesPage = () => {
               icon: 'plus',
               action: () => setModalCreate(true),
             },
-            {
-              name: 'upload',
-              label: 'Tải tệp tin lên',
-              color: 'info',
-              icon: 'cloud-upload',
-              action: () => setModalUpload(true),
-            },
+            // {
+            //   name: 'upload',
+            //   label: 'Tải tệp tin lên',
+            //   color: 'info',
+            //   icon: 'cloud-upload',
+            //   action: () => setModalUpload(true),
+            // },
             {
               name: 'export',
               label: 'Xuất tệp tin excel',
               color: 'warning',
               icon: 'cloud-download',
-              action: () => exportReport(apiLinks.employee.export, 'Danh sách nhân viên'),
+              action: () => exportReport(apiLinks.employee.export, 'Danh sách hội viên'),
             },
           ]}
         />

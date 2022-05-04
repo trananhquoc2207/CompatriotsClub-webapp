@@ -113,12 +113,10 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
 
 
   const onSubmit = async (d) => {
-    //d.preventDefault()
-    console.log("testtttttttttt");
-    console.log(d);
     try {
       await employeeApi.post({
         ...d,
+        gender: parseInt(d.gender?.value ?? 0, 10),
       });
       onClose();
       notify("success", "Đã thêm.");
@@ -138,8 +136,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
   useEffect(() => {
     register("code", {
       required: "Bắt buộc phải nhập mã thành viên"
-      // validate: (p) =>
-      //   isAvailableCode(p).then((r) => (r ? "Mã nhân viên đã dăng kí" : true)),
     });
 
     register("name", { required: "Bắt buộc phải nhập tên nhân viên" });
@@ -154,9 +150,10 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     setValue("birth", new Date());
     setValue("joinDate", new Date());
 
-    setValue("gender", 
-      0
-    );
+    // setValue('gender', {
+    //   value: Object.keys(genders)[0],
+    //   label: genders[Object.keys(genders)[0]]
+    // });
   }, [register, setValue]);
 
   return (
@@ -225,7 +222,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                 <Col xs={4}>
                   <FormGroup>
                     <Label className={classnames({ 'error__label': !!errors.gender })}>Giới tính</Label>
-                    {/* <Select
+                    <Select
                       styles={{
                         control: (base, state) => (
                           errors.gender
@@ -258,7 +255,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                         setValue('gender', value);
                         trigger('gender');
                       }}
-                    /> */}
+                    />
                     {(errors?.gender ?? false) && <FormFeedback>{errors?.gender?.message ?? ''}</FormFeedback>}
                   </FormGroup>
                 </Col>
@@ -298,7 +295,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                   </FormGroup>
                 </Col>
               </Row>
-           
               <Row>
               </Row>
               <Row>

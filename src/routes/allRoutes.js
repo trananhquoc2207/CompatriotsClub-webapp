@@ -15,11 +15,6 @@ import Dashboard from 'pages/dashboard/pages';
 import Employee from 'pages/employee/pages/EmployeesPage';
 import EmployeeDetails from 'pages/employee/pages/EmployeeDetailsPage';
 
-
-//Family
-import Family from 'pages/family/pages/FamilyPage';
-import FamilyDetails from 'pages/family/pages/FamilyDetailsPage';
-
 //Family
 import Contact from 'pages/contact/pages/ContactPage';
 
@@ -49,21 +44,6 @@ const userRoutes = [
     component: EmployeeDetails,
     title: 'Employee details',
   },
-
-
-  {
-    exact: true,
-    path: '/family',
-    component: Family,
-    title: 'Employee list',
-  },
-  {
-    exact: true,
-    path: '/family/:id',
-    component: FamilyDetails,
-    title: 'Employee details',
-  },
-
 
   {
     exact: true,

@@ -41,9 +41,8 @@ const componentTree = [
           <i className="bx bx-chart" />&nbsp;<span>{i18n.t('Thống kê')}</span>
         </Link>
         <ul className="sub-menu" aria-expanded="false">
-          <li><Link to="/statistic/time-off">{i18n.t('Nghỉ vắng')}</Link></li>
-          <li><Link to="/statistic/meal">{i18n.t('Cơm')}</Link></li>
-          <li><Link to="/statistic/diligence">{i18n.t('Chuyên cần, nhà trọ')}</Link></li>
+          <li><Link to="">{i18n.t('Bài viết')}</Link></li>
+          <li><Link to="">{i18n.t('Tương tác')}</Link></li>
         </ul>
       </>
     ),

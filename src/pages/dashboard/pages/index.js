@@ -15,14 +15,14 @@ import { getDashboards } from 'pages/dashboard/actions/dashboard';
 
 const headers = [
   {
-    title: 'Tổng nhân viên',
+    title: 'Tổng thành viên',
     icon: 'body',
     accessor: 'tongSoNhanVien',
     route: '/management/employee/list',
   },
   {
     title: 'Các bài viết',
-    icon: 'body',
+    icon: 'dock-top',
     accessor: '',
     route: '/management/time-off',
   },

@@ -190,7 +190,7 @@ class EmployeeApi {
       });
   };
   delete = id => {
-    return axiosClient.delete(`/Member/${id}`)
+    return axiosClient.delete(`/Member/Delete/${id}`)
       .then(response => {
         if (response && (response.status_code === 404 || response.status_code === 500))
           throw response.error_message;
