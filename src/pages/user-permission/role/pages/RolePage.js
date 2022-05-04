@@ -2,16 +2,13 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-import CustomToolTip from 'components/CustomToolTip';
 import DataTable from 'components/data-table';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { TOKEN } from 'utils/contants';
 import CreateModal from '../components/modal/CreateModal';
 import UpdateModal from '../components/modal/UpdateModal';
 import DeleteModal from '../components/modal/DeleteModal';
-import { getRole, getScheduleGroup } from '../actions/Role';
-import EmployeeList from '../components/modal/EmployeeList';
+import { getRole } from '../actions/Role';
 
 const columns = [
   {
@@ -27,7 +24,11 @@ const columns = [
     align: 'left',
     label: 'Tên vai trò',
   },
-
+  {
+    name: 'description',
+    align: 'left',
+    label: 'Miêu tả',
+  },
   // {
   //   name: 'scheduleLoops',
   //   align: 'left',

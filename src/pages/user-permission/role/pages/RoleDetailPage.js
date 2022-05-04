@@ -5,10 +5,8 @@ import styled from 'styled-components';
 import DataTable from 'components/data-table';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getEmployeeDetails } from 'pages/employee/actions/employee';
-import SearchBar from 'components/SearchBar';
 import { Col, Row } from 'reactstrap';
-import { getRoleDetail, getRolePermission, getScheduleGroupDetail } from '../actions/Role';
+import { getRoleDetail, getRolePermission } from '../actions/Role';
 import AddUserModal from '../components/modal/AddUserModal';
 import RemoveUserModal from '../components/modal/RemoveUserModal';
 import RemovePermissionModal from '../components/modal/RemovePermissionModal.js';
@@ -55,10 +53,10 @@ const userColumns = [
     render: (r) => r?.username ?? '',
   },
   {
-    name: 'employee',
+    name: 'member',
     align: 'left',
-    label: 'Nhân viên',
-    render: (r) => r?.employee ? `${r?.employee?.code} | ${r?.employee?.name}` : undefined,
+    label: 'Thành viên',
+    render: (r) => r?.member ? `${r?.member?.code} | ${r?.member?.name}` : undefined,
   },
 
 ];
@@ -108,7 +106,6 @@ const RoleDetailPage = () => {
       handleRefresh();
     }
   }, [id]);
-
   return (
     <div className="page-content">
       <Wrapper>
@@ -126,7 +123,7 @@ const RoleDetailPage = () => {
           <Col xs={6}>
             <DataTable
               loading={getRoleDetailLoading}
-              title="Danh sách nhân viên"
+              title="Danh sách tài khoản"
               columns={userColumns}
               onPageChange={(index, size) => {
                 if (index > 0) {

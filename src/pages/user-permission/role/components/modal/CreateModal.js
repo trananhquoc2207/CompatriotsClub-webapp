@@ -56,6 +56,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
 
   useEffect(() => {
     register('name', { required: 'Chưa nhập tên vai trò' });
+    register('description', { required: 'Chưa nhập miêu tả' });
   }, [register, setValue]);
 
   return (
@@ -70,6 +71,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
               <FormGroup>
                 <Label className={classnames({ error: !!errors.name })}>Tên vai trò</Label>
                 <Input
+                  className={classnames('form-control', { 'is-invalid': !!errors.name })}
                   placeholder="Nhập tên vai trò"
                   defaultValue={watch('name') || ''}
                   onBlur={({ target: { value } }) => {
@@ -78,6 +80,23 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                   }}
                 />
                 {(errors?.name ?? false) && <FormFeedback>{errors?.name?.message ?? ''}</FormFeedback>}
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col xs={12}>
+              <FormGroup>
+                <Label className={classnames({ error: !!errors.description })}>Miêu tả</Label>
+                <Input
+                  className={classnames('form-control', { 'is-invalid': !!errors.description })}
+                  placeholder="Nhập miêu tả"
+                  defaultValue={watch('description') || ''}
+                  onBlur={({ target: { value } }) => {
+                    setValue('description', value);
+                    trigger('description');
+                  }}
+                />
+                {(errors?.description ?? false) && <FormFeedback>{errors?.description?.message ?? ''}</FormFeedback>}
               </FormGroup>
             </Col>
           </Row>

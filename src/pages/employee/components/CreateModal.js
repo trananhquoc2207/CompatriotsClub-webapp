@@ -117,8 +117,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     try {
       await employeeApi.post({
         ...d,
-        // joinDate: dayJS(d.ngayBatDau).format('YYYY-MM-DD'),
-        // birth: dayJS(d.ngayBatDau).format('YYYY-MM-DD'),
       });
       onClose();
       notify("success", "Đã thêm.");
@@ -126,8 +124,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     } catch (error) {
       await employeeApi.post({
         ...d,
-        // joinDate: dayJS(d.ngayBatDau).format('YYYY-MM-DD'),
-        // birth: dayJS(d.ngayBatDau).format('YYYY-MM-DD'),
       });
       // notify(
       //   "danger",
@@ -138,11 +134,11 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
     }
   };
   useEffect(() => {
-    // register("maNV", {
-    //   required: "Bắt buộc phải nhập mã nhân viên",
-    //   validate: (p) =>
-    //     isAvailableCode(p).then((r) => (r ? "Mã nhân viên đã dăng kí" : true)),
-    // });
+    register("code", {
+      required: "Bắt buộc phải nhập mã thành viên"
+      // validate: (p) =>
+      //   isAvailableCode(p).then((r) => (r ? "Mã nhân viên đã dăng kí" : true)),
+    });
 
     register("name", { required: "Bắt buộc phải nhập tên nhân viên" });
     register("birth", { required: "Bắt buộc phải nhập ngày sinh" });
@@ -162,13 +158,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
       0
     );
   }, [register, setValue]);
-     
-     
 
-  // const handleSubmit = (e)=>{
-  //   e.preventDefault()
-  //   console.log(e.target.jo1b.value,"sadasdas")
-  // }
   return (
      <StyledModal size="lg" isOpen={open}>
       <Form onSubmit={handleSubmit(onSubmit)}>
@@ -310,47 +300,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                 </Col>
               </Row>
               <Row>
-                {/* <Col xs={12}>
-                  <FormGroup>
-                    <Label className={classnames({ 'error__label': !!errors.idBangCap })}>Bằng cấp</Label>
-                    <AsyncSelect
-                      cacheOptions
-                      defaultOptions
-                      loadOptions={getCertificates}
-                      loadingMessage={() => 'Đang lấy dữ liệu...'}
-                      noOptionsMessage={() => 'Không có dữ liệu'}
-                      placeholder="Chọn bằng cấp"
-                      styles={{
-                        control: (base, state) => (
-                          errors.idBangCap
-                            ?
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#F46A6A',
-                              '&:hover': {
-                                borderColor: '#F46A6A'
-                              }
-                            }
-                            :
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#CED4DA',
-                              '&:hover': {
-                                borderColor: '#2684FF'
-                              }
-                            }
-                        )
-                      }}
-                      onChange={(value) => {
-                        setValue('idBangCap', value);
-                        trigger('idBangCap');
-                      }}
-                    />
-                    {(errors?.idBangCap ?? false) && <FormFeedback>{errors?.idBangCap?.message ?? ''}</FormFeedback>}
-                  </FormGroup>
-                </Col> */}
               </Row>
               <Row>
                 <Col xs={6}>
