@@ -5,8 +5,6 @@ import dayJS from 'dayjs';
 
 import ReactEcharts from 'echarts-for-react';
 import Loader from 'components/Loader';
-import { useDispatch, useSelector } from 'react-redux';
-import { ATTENDANCE_STATUS } from 'pages/attendance/utils/contants';
 
 const Wrapper = styled.div`
   position: relative;

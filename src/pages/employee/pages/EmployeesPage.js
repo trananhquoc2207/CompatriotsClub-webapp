@@ -10,7 +10,6 @@ import CreateModal from 'pages/employee/components/CreateModal';
 import UploadModal from 'pages/employee/components/UploadModal';
 import UpdateModal from 'pages/employee/components/UpdateModal';
 import DeleteModal from 'pages/employee/components/DeleteModal';
-import FaceIDModal from 'pages/employee/components/FaceIDModal';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { exportExcel } from 'actions/global';
@@ -276,10 +275,6 @@ const EmployeesPage = () => {
         open={modalUpload}
         onRefresh={getData}
         onClose={() => setModalUpload(false)}
-      />
-      <FaceIDModal
-        data={modalFaceID}
-        onClose={() => setModalFaceID(undefined)}
       />
       <AvatarUploadModal
         data={modalUploadImage}
