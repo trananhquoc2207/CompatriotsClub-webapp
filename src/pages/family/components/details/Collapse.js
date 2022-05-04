@@ -3,7 +3,6 @@ import React from 'react';
 import Accordion from './Accordion';
 import InformationDetails from './InformationSection';
 import InsuranceDetails from './InsuranceSection';
-import ContractDetails from './ContractSection';
 
 const accordions = [
   {
@@ -17,13 +16,7 @@ const accordions = [
     icon: 'shield',
     title: 'Bảo hiểm',
     children: <InsuranceDetails />,
-  },
-  {
-    active: false,
-    icon: 'file',
-    title: 'Hợp đồng',
-    children: <ContractDetails />,
-  },
+  }
 ];
 
 const Collapse = () => {

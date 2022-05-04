@@ -13,9 +13,7 @@ import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
 import NumberFormat from 'react-number-format';
 import DatePicker from 'react-datepicker';
-import certificateApi from 'api/certificateApi';
 import positionApi from 'api/positionApi';
-import contractTypeApi from 'api/contractTypeApi';
 import employeeApi from 'api/employeeApi';
 import { notify } from 'utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
@@ -118,26 +116,7 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
   const [accordionContract, setAccordionContract] = useState(false);
   const [accordionPosition, setAccordionPosition] = useState(false);
   const [accordionDiligence, setAccordionDiligence] = useState(false);
-  const { unitGroup, getUnitGroupLoading } = useSelector((s) => s.unit);
-  const { data: unitList, totalSizes } = unitGroup;
-  const getCertificates = useCallback(async () => {
-    const { success, data } = await certificateApi.getAll({ page_number: 0, page_size: 30 });
-    if (success) {
-      return data.slice(0, 30).map((o) => ({ value: o.id, label: o.tenBangCap }));
-    }
-  }, [certificateApi]);
-  const getContractTypes = useCallback(async () => {
-    const { success, data } = await contractTypeApi.getAll();
-    if (success) {
-      return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenLoaiHopDong }));
-    }
-  }, [contractTypeApi]);
-  const getPositions = useCallback(async (p) => {
-    const { success, data } = await positionApi.getAll({ q: p, isPaged: false });
-    if (success) {
-      return data.map((o) => ({ value: o.id, label: o.tenChucVu }));
-    }
-  }, [positionApi]);
+  const { unitGroup } = useSelector((s) => s.unit);
   const getUnits = useCallback(async (p) => {
     const { success, data } = await unitApi.get({ MaDonVi: p, page_number: 0, page_size: 150 });
     if (success) {
@@ -394,49 +373,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                       }}
                     />
                     {(errors?.soNguoiPhuThuoc ?? false) && <FormFeedback>{errors?.soNguoiPhuThuoc?.message ?? ''}</FormFeedback>}
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <FormGroup>
-                    <Label className={classnames({ 'error__label': !!errors.idBangCap })}>Bằng cấp</Label>
-                    <AsyncSelect
-                      cacheOptions
-                      defaultOptions
-                      loadOptions={getCertificates}
-                      loadingMessage={() => 'Đang lấy dữ liệu...'}
-                      noOptionsMessage={() => 'Không có dữ liệu'}
-                      placeholder="Chọn bằng cấp"
-                      styles={{
-                        control: (base, state) => (
-                          errors.idBangCap
-                            ?
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#F46A6A',
-                              '&:hover': {
-                                borderColor: '#F46A6A'
-                              }
-                            }
-                            :
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#CED4DA',
-                              '&:hover': {
-                                borderColor: '#2684FF'
-                              }
-                            }
-                        )
-                      }}
-                      onChange={(value) => {
-                        setValue('idBangCap', value);
-                        trigger('idBangCap');
-                      }}
-                    />
-                    {(errors?.idBangCap ?? false) && <FormFeedback>{errors?.idBangCap?.message ?? ''}</FormFeedback>}
                   </FormGroup>
                 </Col>
               </Row>
@@ -726,90 +662,6 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
                       }}
                     />
                     {(errors?.idDonVi ?? false) && <FormFeedback>{errors?.idDonVi?.message ?? ''}</FormFeedback>}
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={6}>
-                  <FormGroup>
-                    <Label className={classnames({ 'error__label': !!errors.idChucVu })}>Chức vụ</Label>
-                    <AsyncSelect
-                      cacheOptions
-                      defaultOptions
-                      loadOptions={getPositions}
-                      loadingMessage={() => 'Đang lấy dữ liệu...'}
-                      noOptionsMessage={() => 'Không có dữ liệu'}
-                      placeholder="Chọn chức vụ"
-                      styles={{
-                        control: (base, state) => (
-                          errors.idChucVu
-                            ?
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#F46A6A',
-                              '&:hover': {
-                                borderColor: '#F46A6A'
-                              }
-                            }
-                            :
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#CED4DA',
-                              '&:hover': {
-                                borderColor: '#2684FF'
-                              }
-                            }
-                        )
-                      }}
-                      onChange={(value) => {
-                        setValue('idChucVu', value);
-                        trigger('idChucVu');
-                      }}
-                    />
-                    {(errors?.idChucVu ?? false) && <FormFeedback>{errors?.idChucVu?.message ?? ''}</FormFeedback>}
-                  </FormGroup>
-                </Col>
-                <Col xs={6}>
-                  <FormGroup>
-                    <Label className={classnames({ 'error__label': !!errors.idChiNhanh })}>Chi nhánh</Label>
-                    <AsyncSelect
-                      cacheOptions
-                      defaultOptions
-                      loadOptions={getSites}
-                      loadingMessage={() => 'Đang lấy dữ liệu...'}
-                      noOptionsMessage={() => 'Không có dữ liệu'}
-                      placeholder="Chọn chi nhánh"
-                      styles={{
-                        control: (base, state) => (
-                          errors.idChiNhanh
-                            ?
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#F46A6A',
-                              '&:hover': {
-                                borderColor: '#F46A6A'
-                              }
-                            }
-                            :
-                            {
-                              ...base,
-                              boxShadow: state.isFocused ? null : null,
-                              borderColor: '#CED4DA',
-                              '&:hover': {
-                                borderColor: '#2684FF'
-                              }
-                            }
-                        )
-                      }}
-                      onChange={(value) => {
-                        setValue('idChiNhanh', value);
-                        trigger('idChiNhanh');
-                      }}
-                    />
-                    {(errors?.idChiNhanh ?? false) && <FormFeedback>{errors?.idChiNhanh?.message ?? ''}</FormFeedback>}
                   </FormGroup>
                 </Col>
               </Row>

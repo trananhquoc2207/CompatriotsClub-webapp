@@ -12,10 +12,6 @@ import {
 import Select from 'react-select';
 import AsyncSelect from 'react-select/async';
 import DatePicker from 'react-datepicker';
-import certificateApi from 'api/certificateApi';
-import departmentApi from 'api/departmentApi';
-import positionApi from 'api/positionApi';
-import contractTypeApi from 'api/contractTypeApi';
 import employeeApi from 'api/employeeApi';
 import { notify } from 'utils/helpers';
 import genders from 'assets/mocks/genders.json';
@@ -90,31 +86,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 	const [accordionInfomation, setAccordionInfomation] = useState(true);
 	const [accordionPosition, setAccordionPosition] = useState(false);
 	const [accordionDiligence, setAccordionDiligence] = useState(false);
-
-	const getCertificates = useCallback(async () => {
-		const { success, data } = await certificateApi.getAll({ page_number: 0, page_size: 30 });
-		if (success) {
-			return data.slice(0, 30).map((o) => ({ value: o.id, label: o.tenBangCap }));
-		}
-	}, [certificateApi]);
-	const getContractTypes = useCallback(async () => {
-		const { success, data } = await contractTypeApi.getAll();
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenLoaiHopDong }));
-		}
-	}, [contractTypeApi]);
-	const getDepartments = useCallback(async (p) => {
-		const { success, data } = await departmentApi.get({ tenPB: p });
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenPhongBan }));
-		}
-	}, [departmentApi]);
-	const getPositions = useCallback(async (p) => {
-		const { success, data } = await positionApi.getAll({ q: p , isPaged: false });
-		if (success) {
-			return data.map((o) => ({ value: o.id, label: o.tenChucVu }));
-		}
-	}, [positionApi]);
 
 	const onSubmit = async (d) => {
 		try {
@@ -370,50 +341,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 								</Col>
 							</Row>
 							<Row>
-								<Col xs={12}>
-									<FormGroup>
-										<Label className={classnames({ 'error': !!errors.idBangCap })}>Bằng cấp</Label>
-										<AsyncSelect
-											cacheOptions
-											defaultOptions
-											loadOptions={getCertificates}
-											loadingMessage={() => 'Đang lấy dữ liệu...'}
-											noOptionsMessage={() => 'Không có dữ liệu'}
-											placeholder="Chọn bằng cấp"
-											styles={{
-												control: (base, state) => (
-													errors.idBangCap
-														?
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#F46A6A',
-															'&:hover': {
-																borderColor: '#F46A6A'
-															}
-														}
-														:
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#CED4DA',
-															'&:hover': {
-																borderColor: '#2684FF'
-															}
-														}
-												)
-											}}
-											defaultValue={watch('idBangCap') || undefined}
-											onChange={(value) => {
-												setValue('idBangCap', value);
-												trigger('idBangCap');
-											}}
-										/>
-										{(errors?.idBangCap ?? false) && <FormFeedback>{errors?.idBangCap?.message ?? ''}</FormFeedback>}
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
 								<Col xs={6}>
 									<FormGroup>
 										<Label className={classnames({ 'error': !!errors.email })}>Email</Label>
@@ -513,48 +440,7 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 								</Col>
 							</Row>
 							<Row>
-								<Col xs={6}>
-									<FormGroup>
-										<Label className={classnames({ 'error__label': !!errors.idChucVu })}>Chức vụ</Label>
-										<AsyncSelect
-											cacheOptions
-											defaultOptions
-											loadOptions={getPositions}
-											loadingMessage={() => 'Đang lấy dữ liệu...'}
-											noOptionsMessage={() => 'Không có dữ liệu'}
-											placeholder="Chọn chức vụ"
-											styles={{
-												control: (base, state) => (
-													errors.idChucVu
-														?
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#F46A6A',
-															'&:hover': {
-																borderColor: '#F46A6A'
-															}
-														}
-														:
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#CED4DA',
-															'&:hover': {
-																borderColor: '#2684FF'
-															}
-														}
-												)
-											}}
-											defaultValue={watch('idChucVu') || 0}
-											onChange={(value) => {
-												setValue('idChucVu', value);
-												trigger('idChucVu');
-											}}
-										/>
-										{(errors?.idChucVu ?? false) && <FormFeedback>{errors?.idChucVu?.message ?? ''}</FormFeedback>}
-									</FormGroup>
-								</Col>
+							
 								{/* <Col xs={6}>
 									<FormGroup>
 										<Label className={classnames({ 'error__label': !!errors.idChiNhanh })}>Chi nhánh</Label>
