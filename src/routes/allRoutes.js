@@ -23,15 +23,7 @@ import FamilyDetails from 'pages/family/pages/FamilyDetailsPage';
 //Family
 import Contact from 'pages/contact/pages/ContactPage';
 
-
-import SettingAccount from 'pages/setting/Account';
-
-import SettingRecorder from 'pages/setting/Recorder';
-import SettingChangePassword from 'pages/setting/ChangePassword';
-import SettingRatedTemperature from 'pages/setting/rated-temperature/pages/RatedTemperaturePage';
-// task-management
-// Statistic
-
+//Role
 import RolePage from 'pages/user-permission/role/pages/RolePage';
 import PermissionPage from 'pages/user-permission/permission/pages/PermissionPage';
 import RoleDetailPage from 'pages/user-permission/role/pages/RoleDetailPage';
@@ -79,18 +71,6 @@ const userRoutes = [
     component: Contact,
     title: 'Contact list',
   },
-
-  // Setting rated-temperature
-  { path: '/management/rated-temperature', component: SettingRatedTemperature, title: 'Setting Rated Temperature' },
-
-  // Time Recorder
-  { path: '/management/recorder', component: SettingRecorder, title: 'Setting recorder' },
-
-  // Setting Account
-  { path: '/management/account', component: SettingAccount, title: 'Setting account' },
-
-
-
   // user-permission
   {
     path: '/role',
