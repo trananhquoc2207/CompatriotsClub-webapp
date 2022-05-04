@@ -17,9 +17,7 @@ import employeeApi from 'api/employeeApi';
 import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 
-import unitApi from 'api/unitApi';
 import shiftApi from 'api/shiftApi';
-import unitType from 'assets/mocks/unitType.json';
 import { useDispatch, useSelector } from 'react-redux';
 
 const StyledModal = styled(Modal)`
@@ -90,15 +88,7 @@ const EmployeeList = ({ data, open, onClose, onRefresh }) => {
 
   const onSubmit = async (d) => {
     try {
-      await unitApi.put({
-        ...d,
-        id: data.id,
-        idDonViCha: d.idDonViCha?.value ?? 0,
-        caLamViecId: d.caLamViecId?.value ?? 0,
-        loaiDonVi: parseInt(d.loaiDonVi?.value) ?? 0,
-        phuCap: parseFloat(d?.phuCap),
 
-      });
       onClose();
       notify('success', 'Đã cập nhật.');
       onRefresh();
@@ -117,10 +107,6 @@ const EmployeeList = ({ data, open, onClose, onRefresh }) => {
   useEffect(() => {
     reset({
       ...data,
-      loaiDonVi: {
-        value: data?.loaiDonVi ?? 0,
-        label: unitType[data?.loaiDonVi ?? 0],
-      },
       caLamViecId: {
         value: data?.caLamViec?.id ?? 0,
         label: (data?.caLamViec?.gioVaoCa.slice(0, 5) + ' - ' + data?.caLamViec?.gioRaCa.slice(0, 5)) ?? '--:--',

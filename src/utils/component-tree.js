@@ -71,7 +71,7 @@ const componentTree = [
           <li><Link to="/employee">Hội viên</Link></li>
           <li><Link to="/family">Gia đình</Link></li>
           <li><Link to="/management/contract/list">Hội</Link></li>
-          <li><Link to="/management/contract/list">Ban Liên lạc</Link></li>
+          <li><Link to="/contact">Ban Liên lạc</Link></li>
         </ul>
       </>
     ),

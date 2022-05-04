@@ -21,7 +21,6 @@ import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 import genders from 'assets/mocks/genders.json';
 import materialStatuses from 'assets/mocks/material-status.json';
-import unitApi from 'api/unitApi';
 
 const StyledModal = styled(Modal)`
     .modal-title {
@@ -115,12 +114,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 		const { success, data } = await positionApi.getAll({ q: p , isPaged: false });
 		if (success) {
 			return data.map((o) => ({ value: o.id, label: o.tenChucVu }));
-		}
-	}, [positionApi]);
-	const getUnits = useCallback(async (p) => {
-		const { success, data } = await unitApi.get({ maDonVi: p });
-		if (success) {
-			return data.slice(0, 10).map((o) => ({ value: o.id, label: o.tenDonVi }));
 		}
 	}, [positionApi]);
 	const getSites = useCallback(async (p) => {
@@ -490,7 +483,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 										<AsyncSelect
 											cacheOptions
 											defaultOptions
-											loadOptions={getUnits}
 											loadingMessage={() => 'Đang lấy dữ liệu...'}
 											noOptionsMessage={() => 'Không có dữ liệu'}
 											placeholder="Chọn đơn vị công tác"

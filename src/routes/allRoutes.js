@@ -20,6 +20,9 @@ import EmployeeDetails from 'pages/employee/pages/EmployeeDetailsPage';
 import Family from 'pages/family/pages/FamilyPage';
 import FamilyDetails from 'pages/family/pages/FamilyDetailsPage';
 
+//Family
+import Contact from 'pages/contact/pages/ContactPage';
+
 
 import SettingAccount from 'pages/setting/Account';
 
@@ -70,7 +73,12 @@ const userRoutes = [
   },
 
 
-
+  {
+    exact: true,
+    path: '/contact',
+    component: Contact,
+    title: 'Contact list',
+  },
 
   // Setting rated-temperature
   { path: '/management/rated-temperature', component: SettingRatedTemperature, title: 'Setting Rated Temperature' },

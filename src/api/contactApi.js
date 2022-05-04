@@ -1,9 +1,9 @@
 import i18n from 'i18n';
 import axiosClient from './axiosClient';
 
-class UnitApi {
+class ContactApi {
   get = (params) => axiosClient
-      .get('/DonVi', { params })
+      .get('/Contact/GetPaged', { params })
       .then((response) => {
         if (response) return response;
         throw response;
@@ -27,7 +27,7 @@ class UnitApi {
       });
 
   post = (params) => axiosClient
-      .post('/DonVi', params)
+      .post('/Contact', params)
       .then((response) => {
         if (response) return response;
         throw response;
@@ -99,5 +99,5 @@ class UnitApi {
       })
 }
 
-const unitApi = new UnitApi();
-export default unitApi;
+const contactApi = new ContactApi();
+export default contactApi;

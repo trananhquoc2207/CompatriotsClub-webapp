@@ -5,7 +5,7 @@ import department from 'pages/setting/department/reducers/department';
 import role from 'pages/user-permission/role/reducers/Role';
 import permission from 'pages/user-permission/permission/reducers/Permission';
 import user from 'pages/user-permission/user/reducers/user';
-
+import contact from 'pages/contact/reducers/contact';
 export default {
   global,
   dashboard,
@@ -14,4 +14,5 @@ export default {
   role,
   permission,
   user,
+  contact
 };

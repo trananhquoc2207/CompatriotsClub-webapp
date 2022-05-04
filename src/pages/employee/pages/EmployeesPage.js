@@ -64,7 +64,9 @@ const EmployeesPage = () => {
     employeeFilter,
     employees,
     getEmployeesLoading,
-  } = useSelector((state) => state.employee);
+  } = useSelector((state) => {
+    console.log(state);
+    return state.employee});
   const {
     exportLoading,
   } = useSelector((state) => state.global);
@@ -134,7 +136,6 @@ const EmployeesPage = () => {
     //   },
     // },
   ]), [setModalUploadImage]);
-
   const exportReport = useCallback((url, fileName) => {
     dispatch(exportExcel({
       method: 'GET',

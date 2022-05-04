@@ -21,7 +21,6 @@ import siteApi from 'api/siteApi';
 import { notify } from 'utils/helpers';
 import genders from 'assets/mocks/genders.json';
 import materialStatuses from 'assets/mocks/material-status.json';
-import unitApi from 'api/unitApi';
 
 const StyledModal = styled(Modal)`
     .modal-title {

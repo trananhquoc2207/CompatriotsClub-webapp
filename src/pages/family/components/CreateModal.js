@@ -23,8 +23,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import genders from 'assets/mocks/genders.json';
 import materialStatuses from 'assets/mocks/material-status.json';
 import insurancePaymentTerm from 'assets/mocks/insurance-payment-term.json';
-import unitType from 'assets/mocks/unitType.json';
-import unitApi from 'api/unitApi';
 
 const StyledModal = styled(Modal)`
   .modal-title {
