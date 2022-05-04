@@ -1,21 +1,14 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, {  useEffect } from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
-import { Controller, useForm } from 'react-hook-form';
-import dayJS from 'dayjs';
+import {  useForm } from 'react-hook-form';
+
 import {
   Row, Col,
   Form, FormGroup, FormFeedback, Label, Input, Button,
-  Modal, ModalHeader, ModalBody, ModalFooter, NavLink,
-  NavItem,
-  TabContent,
-  Nav,
-  TabPane,
-  CardTitle,
-  Card, CardHeader, CardBody,
+  Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
 import { notify } from 'utils/helpers';
-import { useDispatch } from 'react-redux';
 import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 
@@ -26,47 +19,6 @@ const StyledModal = styled(Modal)`
     }
 `;
 
-const StyledCard = styled(Card)`
-    border-radius: 3px;
-    margin-bottom: 4px;
-
-    .card-body {
-        padding: 1rem;
-        background-color: #FCFCFC;
-    }
-
-    .title {
-        font-size: .9rem;
-        font-weight: 700;
-        transition: all .4s;
-
-        &::after {
-            content: '\\ed35';
-            font-family: 'boxicons' !important;
-            display: block;
-            float: right;
-            transition: transform .2s;
-        }
-
-        &__active {
-            &::after {
-                transform: rotate(90deg);
-            }
-        }
-    }
-
-    .error {
-        color: #f46a6a;
-    }
-
-    .disabled {
-        display: none;
-    }
-
-    .invalid-feedback {
-        display: block;
-    }
-`;
 const UpdateModal = ({ data, onClose, onRefresh }) => {
   const {
     errors,
@@ -74,13 +26,10 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
     trigger,
     register,
     setValue,
-    control,
-    getValues,
     handleSubmit,
     reset,
   } = useForm();
 
-  const dispatch = useDispatch();
   const onSubmit = async (d) => {
     const requestData = {
       ...d,

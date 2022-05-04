@@ -1,11 +1,6 @@
-import React, { useEffect, useMemo, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import dayJS from 'dayjs';
-
-import ReactEcharts from 'echarts-for-react';
 import Loader from 'components/Loader';
-
+import React from 'react';
 const Wrapper = styled.div`
   position: relative;
   & .content {

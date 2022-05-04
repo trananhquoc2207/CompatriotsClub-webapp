@@ -89,7 +89,7 @@ const SidebarContent = (props) => {
             .map((c) =>
               c?.component
                 ? (
-                  <li>
+                  <li key={c.index} >
                     {typeof c.component === 'function' ? c.component(userInfo?.idNhanVien) : c.component}
                   </li>
                 ) : null

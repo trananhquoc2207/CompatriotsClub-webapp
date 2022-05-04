@@ -1,18 +1,25 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import dayJS from 'dayjs';
 import {
-	Row, Col,
-	Form, FormGroup, FormFeedback, Label, Input, Button,
-	Modal, ModalHeader, ModalBody, ModalFooter,
-	Card, CardHeader, CardBody,
+    Row,
+    Col,
+    Form,
+    FormGroup,
+    FormFeedback,
+    Label,
+    Input,
+    Button,
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Card,
 } from 'reactstrap';
 import { notify } from 'utils/helpers';
 
 import contactApi from 'api/contactApi';
-import contactType from 'assets/mocks/contactType.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from '../actions/contact';
 

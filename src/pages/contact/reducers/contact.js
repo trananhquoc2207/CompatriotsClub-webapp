@@ -98,23 +98,6 @@ export default function (state = INITIAL_STATE, action) {
         ...state,
         getLevelThreeByContactLoading: false,
       };
-    case types.GET_LEVEL_THREE_BY_CONTACT_REQUEST:
-      return {
-        ...state,
-        getLevelThreeByContactLoading: true,
-      };
-    case types.GET_LEVEL_THREE_BY_CONTACT_SUCCESS:
-      return {
-        ...state,
-        levelThreeByContact: action.payload,
-        getLevelThreeByContactLoading: false,
-      };
-    case types.GET_LEVEL_THREE_BY_CONTACT_FAILURE:
-      return {
-        ...state,
-        getLevelThreeByContactLoading: false,
-      };
-
     case types.GET_LEVEL_FOUR_BY_CONTACT_REQUEST:
       return {
         ...state,

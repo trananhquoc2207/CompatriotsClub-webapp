@@ -1,11 +1,6 @@
-import React, { useState, useEffect, useMemo, useCallback, forwardRef } from 'react';
-import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import moment from 'moment';
-import dayJS from 'dayjs';
-
+import React from 'react';
 import { Button } from 'reactstrap';
-import ReactEcharts from 'echarts-for-react';
 import Loader from 'components/Loader';
 import { WeekPicker } from 'components/date-picker';
 

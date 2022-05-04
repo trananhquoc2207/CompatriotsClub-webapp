@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withNamespaces } from 'react-i18next';
-
-import LanguageDropdown from 'components/Common/TopbarDropdown/LanguageDropdown';
 import ProfileMenu from 'components/Common/TopbarDropdown/ProfileMenu';
 import { TOKEN } from 'utils/contants';
 

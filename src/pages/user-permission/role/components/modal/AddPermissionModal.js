@@ -1,12 +1,20 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import {
-  Row, Col,
-  Form, FormGroup, FormFeedback, Label, Input, Button,
-  Modal, ModalHeader, ModalBody, ModalFooter,
-  Card
+  Row,
+  Col,
+  Form,
+  FormGroup,
+  FormFeedback,
+  Label,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Card,
 } from 'reactstrap';
 import AsyncSelect from 'react-select/async';
 import { notify } from 'utils/helpers';

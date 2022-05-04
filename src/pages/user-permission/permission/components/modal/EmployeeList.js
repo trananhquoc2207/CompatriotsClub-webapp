@@ -1,17 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import classnames from 'classnames';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
-import dayJS from 'dayjs';
-import {
-  Form,  Button,
-  Modal, ModalHeader, ModalBody, ModalFooter,
-  Card
-} from 'reactstrap';
+import { Form, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 import { notify } from 'utils/helpers';
 
-import { useDispatch, useSelector } from 'react-redux';
 
 const StyledModal = styled(Modal)`
     .modal-title {
@@ -20,64 +13,14 @@ const StyledModal = styled(Modal)`
     }
 `;
 
-const StyledCard = styled(Card)`
-    border-radius: 3px;
-    margin-bottom: 4px;
-
-    .card-body {
-        padding: 1rem;
-        background-color: #FCFCFC;
-    }
-
-    .title {
-        font-size: .9rem;
-        font-weight: 700;
-        transition: all .4s;
-
-        &::after {
-            content: '\\ed35';
-            font-family: 'boxicons' !important;
-            display: block;
-            float: right;
-            transition: transform .2s;
-        }
-
-        &__active {
-            &::after {
-                transform: rotate(90deg);
-            }
-        }
-    }
-
-    .error {
-        color: #f46a6a;
-    }
-
-    .disabled {
-        display: none;
-    }
-
-    .invalid-feedback {
-        display: block;
-    }
-`;
 
 const EmployeeList = ({ data, open, onClose, onRefresh }) => {
   const {
-    errors,
-    watch,
-    trigger,
     register,
     setValue,
-    getValues,
     reset,
     handleSubmit,
   } = useForm();
-
-  const [type, setType] = useState(2);
-  const dispatch = useDispatch();
-  const { unitGroup, getUnitGroupLoading } = useSelector((s) => s.unit);
-  const { data: unitList, totalSizes } = unitGroup;
 
   const onSubmit = async (d) => {
     try {

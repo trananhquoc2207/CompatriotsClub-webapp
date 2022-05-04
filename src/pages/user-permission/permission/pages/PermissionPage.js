@@ -1,17 +1,12 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
-
-import CustomToolTip from 'components/CustomToolTip';
 import DataTable from 'components/data-table';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { TOKEN } from 'utils/contants';
 import CreateModal from '../components/modal/CreateModal';
 import UpdateModal from '../components/modal/UpdateModal';
 import DeleteModal from '../components/modal/DeleteModal';
-import { getPermission, getRole, getScheduleGroup } from '../actions/Permission';
-import EmployeeList from '../components/modal/EmployeeList';
+import { getPermission } from '../actions/Permission';
 
 const columns = [
   {

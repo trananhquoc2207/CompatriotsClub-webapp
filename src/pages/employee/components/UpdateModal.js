@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';

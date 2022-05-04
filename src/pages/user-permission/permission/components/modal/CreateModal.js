@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React , { useState, useEffect } from 'react';
 import classnames from 'classnames';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
@@ -8,7 +8,7 @@ import {
   Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
 import { notify } from 'utils/helpers';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 
