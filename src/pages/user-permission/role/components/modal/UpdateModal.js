@@ -103,6 +103,7 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
   };
   useEffect(() => {
     register('name', { required: 'Chưa nhập tên vai trò' });
+    register('description', { required: 'Chưa nhập miêu tả' });
 
   }, [register, setValue]);
   useEffect(() => {
@@ -133,6 +134,24 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
               </FormGroup>
             </Col>
           </Row>
+          
+          <Row>
+            <Col xs={12}>
+              <FormGroup>
+                <Label className={classnames({ error: !!errors.description })}>Miêu tả</Label>
+                <Input
+                  placeholder="Nhập miêu tả"
+                  defaultValue={watch('description') || ''}
+                  onBlur={({ target: { value } }) => {
+                    setValue('description', value);
+                    trigger('description');
+                  }}
+                />
+                {(errors?.description ?? false) && <FormFeedback>{errors?.description?.message ?? ''}</FormFeedback>}
+              </FormGroup>
+            </Col>
+          </Row>
+
         </ModalBody>
         <ModalFooter>
           <Button type="submit" color="success">Xác nhận</Button>

@@ -365,6 +365,33 @@ const CreateModal = ({ open, onClose, onRefresh }) => {
               </Row>
             </CardBody>
           </StyledCard>
+          <StyledCard>
+          <CardHeader className={classnames({ 'error__card': informationErrors })} onClick={() => setAccordionInfomation(!accordionInfomation)}>
+              <span className={classnames('title', { 'title__active': accordionInfomation })}>Địa chỉ</span>
+            </CardHeader>
+            <CardBody className={classnames({ 'disabled': !accordionInfomation })}>
+            <Row>
+              <Col xs={4}>
+                  <FormGroup>
+                    <Label className={classnames({ 'error__label': !!errors.code })}>Nhập tỉnh</Label>
+                    <Input
+                      placeholder="Nhập tỉnh"
+                      className={classnames('form-control')}
+                    />
+                  </FormGroup>
+                </Col>
+                <Col xs={4}>
+                  <FormGroup>
+                    <Label className={classnames({ 'error__label': !!errors.code })}>Nhập quận/huyện</Label>
+                    <Input
+                      placeholder="Nhập quận/huyện"
+                      className={classnames('form-control')}
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+            </CardBody>
+          </StyledCard>
         </ModalBody>
         <ModalFooter>
           <Button type="submit" color="success">Xác nhận</Button>

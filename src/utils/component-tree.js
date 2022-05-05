@@ -9,7 +9,7 @@ const GroupKey = {
   DASHBOARD: 'DASHBOARD',
   STATISTIC: 'STATISTIC',
   COMPANY_MANAGEMENT: 'COMPANY_MANAGEMENT',
-  EMPLOYEE_MANAGEMENT: 'EMPLOYEE_MANAGEMENT',
+  MEMBER_MANAGEMENT: 'MEMBER_MANAGEMENT',
   PERMISSION_MANAGEMENT: 'PERMISSION_MANAGEMENT',
 
   // EMPLOYEE_DETAIL: 'EMPLOYEE_DETAIL',
@@ -50,7 +50,7 @@ const componentTree = [
   },
   {
     index: 3,
-    code: GroupKey.EMPLOYEE_MANAGEMENT,
+    code: GroupKey.MEMBER_MANAGEMENT,
     component: (
       <>
         <Link to="/#" className="has-arrow waves-effect">
