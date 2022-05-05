@@ -113,27 +113,23 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 	};
 
 	useEffect(() => {
-		register('id');
-		register('maNV', { required: 'Bắt buộc phải nhập mã nhân viên' });
-		register('tenNV', { required: 'Bắt buộc phải nhập tên nhân viên' });
-		register('ngaySinh', { required: 'Bắt buộc phải nhập ngày sinh' });
-		register('gioiTinh', { required: 'Bắt buộc phải chọn giới tính' });
-		register('quocTich', { required: 'Bắt buộc phải nhập quốc tịch' });
-		register('canCuocCongDan', { required: 'Bắt buộc phải nhập căn cước công dân' });
-		register('idBangCap', { required: 'Bắt buộc phải chọn bằng cấp' });
-		register('tinhTrangHonNhan', { required: 'Bắt buộc phải chọn tình trạng hôn nhân' });
-		register('soNguoiPhuThuoc', { required: 'Bắt buộc phải nhập số người phụ thuộc' });
-		register('email', { required: 'Bắt buộc phải nhập email' });
-		register('soDienThoai', { required: 'Bắt buộc phải nhập số điện thoại' });
-		register('diaChi', { required: 'Bắt buộc phải nhập địa chỉ' });
-		register('dongBH');
-		register('ngayDongBH');
-		register('kyHanDongBH');
-		register('idDonVi', { required: 'Bắt buộc phải chọn phòng ban' });
-		register('idChucVu', { required: 'Bắt buộc phải chọn chức vụ' });
-		register('idChiNhanh', { required: 'Bắt buộc phải chọn chi nhánh' });
-		register('bonusType', { required: 'Chưa chọn chế độ chuyên cần' });
-	}, [register, setValue]);
+		register("code", {
+		  required: "Bắt buộc phải nhập mã thành viên"
+		});
+	
+		register("name", { required: "Bắt buộc phải nhập tên nhân viên" });
+		register("birth", { required: "Bắt buộc phải nhập ngày sinh" });
+		register("joinDate", new Date());
+		register("gender", { required: "Bắt buộc phải chọn giới tính" });
+		register("notes", { required: "Bắt buộc phải nhập tên nhân viên" });
+		register("email", { required: "Bắt buộc phải nhập tên nhân viên" });
+		register("phoneNumber", { required: "Bắt buộc phải nhập tên nhân viên" });
+		register("word", { required: "Bắt buộc phải nhập tên nhân viên" });
+		register("idcard", { required: "Bắt buộc phải nhập cmnd" });
+		setValue("birth", new Date());
+		setValue("joinDate", new Date());
+	  }, [register, setValue]);
+
 	useEffect(() => {
 		reset({
 			...data,
@@ -388,152 +384,6 @@ const UpdateModal = ({ data, onClose, onRefresh }) => {
 										{(errors?.diaChi ?? false) && <FormFeedback>{errors?.diaChi?.message ?? ''}</FormFeedback>}
 									</FormGroup>
 								</Col>
-							</Row>
-						</CardBody>
-					</StyledCard>
-					<StyledCard>
-						<CardHeader onClick={() => setAccordionPosition(!accordionPosition)}>
-							<span className={classnames('title', { 'title__active': accordionPosition })}>Vị trí làm việc</span>
-						</CardHeader>
-						<CardBody className={classnames({ 'disabled': !accordionPosition })}>
-							<Row>
-								<Col xs={12}>
-									<FormGroup>
-										<Label className={classnames({ 'error__label': !!errors.idDonVi })}>Đơn vị công tác</Label>
-										<AsyncSelect
-											cacheOptions
-											defaultOptions
-											loadingMessage={() => 'Đang lấy dữ liệu...'}
-											noOptionsMessage={() => 'Không có dữ liệu'}
-											placeholder="Chọn đơn vị công tác"
-											styles={{
-												control: (base, state) => (
-													errors.idDonVi
-														?
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#F46A6A',
-															'&:hover': {
-																borderColor: '#F46A6A'
-															}
-														}
-														:
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#CED4DA',
-															'&:hover': {
-																borderColor: '#2684FF'
-															}
-														}
-												)
-											}}
-											defaultValue={watch('idDonVi') || 0}
-											onChange={(value) => {
-												setValue('idDonVi', value);
-												trigger('idDonVi');
-											}}
-										/>
-										{(errors?.idDonVi ?? false) && <FormFeedback>{errors?.idDonVi?.message ?? ''}</FormFeedback>}
-									</FormGroup>
-								</Col>
-							</Row>
-							<Row>
-							
-								{/* <Col xs={6}>
-									<FormGroup>
-										<Label className={classnames({ 'error__label': !!errors.idChiNhanh })}>Chi nhánh</Label>
-										<AsyncSelect
-											cacheOptions
-											defaultOptions
-											loadOptions={getSites}
-											loadingMessage={() => 'Đang lấy dữ liệu...'}
-											noOptionsMessage={() => 'Không có dữ liệu'}
-											placeholder="Chọn chi nhánh"
-											styles={{
-												control: (base, state) => (
-													errors.idChiNhanh
-														?
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#F46A6A',
-															'&:hover': {
-																borderColor: '#F46A6A'
-															}
-														}
-														:
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#CED4DA',
-															'&:hover': {
-																borderColor: '#2684FF'
-															}
-														}
-												)
-											}}
-											defaultValue={watch('idChiNhanh') || 0}
-											onChange={(value) => {
-												setValue('idChiNhanh', value);
-												trigger('idChiNhanh');
-											}}
-										/>
-										{(errors?.idChiNhanh ?? false) && <FormFeedback>{errors?.idChiNhanh?.message ?? ''}</FormFeedback>}
-									</FormGroup>
-								</Col> */}
-							</Row>
-						</CardBody>
-					</StyledCard>
-					<StyledCard>
-						<CardHeader onClick={() => setAccordionDiligence(!accordionDiligence)}>
-							<span className={classnames('title', { 'title__active': accordionDiligence })}>Chuyên cần nhà trọ</span>
-						</CardHeader>
-						<CardBody className={classnames({ 'disabled': !accordionDiligence })}>
-							<Row>
-								<Col xs={12}>
-									<FormGroup>
-										<Label className={classnames({ error__label: !!errors.bonusType })}>Hỗ trợ chuyên cần nhà trọ</Label>
-										<Select
-											styles={{
-												control: (base, state) => (
-													errors.bonusType
-														?
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#F46A6A',
-															'&:hover': {
-																borderColor: '#F46A6A',
-															},
-														}
-														:
-														{
-															...base,
-															boxShadow: state.isFocused ? null : null,
-															borderColor: '#CED4DA',
-															'&:hover': {
-																borderColor: '#2684FF',
-															},
-														}
-												),
-											}}
-											defaultValue={watch('bonusType') || 0}
-											placeholder={'Được hưởng chuyên cần nhà trọ...'}
-											options={Object.keys(bonusType || {}).map((key) => ({
-												value: key,
-												label: bonusType[key],
-											}))}
-											onChange={(value) => {
-												setValue('bonusType', value);
-												trigger('bonusType');
-											}}
-										/>
-										{(errors?.bonusType ?? false) && <FormFeedback>{errors?.bonusType?.message ?? ''}</FormFeedback>}
-									</FormGroup>
-								</Col>
-
 							</Row>
 						</CardBody>
 					</StyledCard>
