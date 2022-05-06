@@ -73,12 +73,6 @@ const userRoutes = [
   },
 
   {
-    path: '/client',
-    component: ClientPage,
-    title: 'Client',
-  },
-
-  {
     path: '*',
     component: (props) => {
       const token = JSON.parse(localStorage.getItem(TOKEN));
@@ -94,6 +88,13 @@ const userRoutes = [
 ];
 
 const authRoutes = [
+  
+  {
+    path: '/client',
+    component: ClientPage,
+    title: 'Client',
+  },
+
   // Authentication
   { path: '/logout', component: Logout, title: 'Logout' },
   { path: '/login', component: LoginPage, title: 'Login' },
