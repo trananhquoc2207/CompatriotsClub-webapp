@@ -10,7 +10,6 @@ import {
 	Card, CardHeader, CardBody
 } from 'reactstrap';
 import Select from 'react-select';
-import AsyncSelect from 'react-select/async';
 import DatePicker from 'react-datepicker';
 import employeeApi from 'api/employeeApi';
 import { notify } from 'utils/helpers';

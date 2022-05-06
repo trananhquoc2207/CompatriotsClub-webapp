@@ -24,6 +24,9 @@ import PermissionPage from 'pages/user-permission/permission/pages/PermissionPag
 import RoleDetailPage from 'pages/user-permission/role/pages/RoleDetailPage';
 import { GroupKey } from 'utils/component-tree';
 
+//Client
+import ClientPage from 'pages/client/page/ClientPage'
+
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const userRoutes = [
@@ -68,6 +71,13 @@ const userRoutes = [
     component: PermissionPage,
     title: 'Quyền',
   },
+
+  {
+    path: '/client',
+    component: ClientPage,
+    title: 'Client',
+  },
+
   {
     path: '*',
     component: (props) => {

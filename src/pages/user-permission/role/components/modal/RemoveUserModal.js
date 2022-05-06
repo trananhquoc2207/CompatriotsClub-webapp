@@ -25,7 +25,7 @@ const RemoveUserModal = ({ data, onRefresh, onClose }) => {
     } catch (error) {
       notify('danger', 'Đã xảy ra lỗi.');
     }
-  });
+  },[]);
   return (
     <Modal size="sm" isOpen={Boolean(data)} style={{ top: '100px', maxWidth: '350px' }}>
       <ModalHeader style={{ display: 'block', border: 'none', paddingBottom: '.5rem' }}>
