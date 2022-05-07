@@ -16,6 +16,7 @@ const DeleteModal = ({ data, onRefresh, onClose }) => {
       notify('success', 'Đã xóa.');
       onRefresh();
     } catch (error) {
+      console.log(error);
       notify('danger', 'Đã xảy ra lỗi.');
     }
   });

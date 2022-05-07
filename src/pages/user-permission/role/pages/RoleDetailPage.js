@@ -147,7 +147,9 @@ const RoleDetailPage = () => {
                   label: 'Xóa',
                   icon: 'trash-alt',
                   color: 'danger',
-                  action: (d) => setModalRemoveUser({ role: id, employee: d?.id }),
+                  action: (d) =>{
+                    return (setModalRemoveUser({ role: id, employee: d?.id }))
+                  }
                 },
               ]}
               tableActions={[

@@ -3,7 +3,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { userRoutes, authRoutes } from './routes/allRoutes';
 import Authmiddleware from './routes/middleware/Authmiddleware';
-
+import ClientPage from 'pages/client/page/ClientPage';
 // eslint-disable-next-line
 import Layout from './components/Layout/';
 import NonAuthLayout from './components/NonAuthLayout';
@@ -33,6 +33,9 @@ const App = () => {
   return (
     <>
       <Router>
+        {/* <Switch>
+        <ClientPage></ClientPage>
+        </Switch> */}
         <Switch>
           {authRoutes.map((route, idx) => (
             <NonAuthmiddleware

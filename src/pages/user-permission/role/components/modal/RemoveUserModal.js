@@ -6,7 +6,7 @@ import httpClient from 'utils/http-client';
 import apiLinks from 'utils/api-links';
 
 const RemoveUserModal = ({ data, onRefresh, onClose }) => {
-
+  console.log(data)
   const onSubmit = useCallback(async () => {
     const requestData = {
       ids: [
@@ -23,9 +23,10 @@ const RemoveUserModal = ({ data, onRefresh, onClose }) => {
       notify('success', 'Đã xóa.');
       onRefresh();
     } catch (error) {
-      notify('danger', 'Đã xảy ra lỗi.');
+      console.log(error);
+      notify('danger', 'Đã xảy ra lỗi .');
     }
-  },[]);
+  });
   return (
     <Modal size="sm" isOpen={Boolean(data)} style={{ top: '100px', maxWidth: '350px' }}>
       <ModalHeader style={{ display: 'block', border: 'none', paddingBottom: '.5rem' }}>

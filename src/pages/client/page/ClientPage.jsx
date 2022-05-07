@@ -6,14 +6,20 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import HeaderClient from 'pages/client/components/HeaderClient'
 import TitlePage from 'pages/client/components/TitlePage'
 import SidebarClient from 'pages/client/components/SidebarClient'
 import Activate from 'pages/client/components/Activate'
+import styled from 'styled-components';
+import 'assets/scss/custom/pages/_client.scss';
 
 function ClientPage()
 {
     return (
-<div className="page-content">
+      <>
+      <HeaderClient></HeaderClient>
+      <div className="page-content">
+      
         <Container fluid>
           <Row>
             <Col xs="8">
@@ -26,7 +32,9 @@ function ClientPage()
           </Row>
         </Container>
       </div>
-    );
+    
+    </>
+     ); 
 }
 
 export default ClientPage
